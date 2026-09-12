@@ -1,21 +1,230 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Counter from '../components/Counter.tsx';
+import Section from '../components/Section.astro';
+import LinkList from '../components/LinkList.astro';
+import CVList from '../components/CVList.astro';
+import {
+  biographies,
+  education,
+  positions,
+  publications,
+  tarimMummies,
+  editorships,
+  interviews,
+  chineseWebsites,
+  youtubeVideos,
+  tributes,
+  snailStory,
+} from '../data/mair';
 ---
 
-<BaseLayout title="Victor Mair">
-  <main class="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-8 px-6 text-center">
-    <p class="text-sm font-medium uppercase tracking-[0.2em] text-sky-400">
-      Astro 7 · React 19 · Tailwind CSS 4
+<BaseLayout title="Victor H. Mair (1943–2026) — In Memoriam">
+  <!-- ============ HERO ============ -->
+  <div class="relative overflow-hidden">
+    <div class="mx-auto max-w-4xl px-6 pt-16 pb-12 text-center sm:pt-24">
+      <img
+        src="/mair-portrait.jpg"
+        alt="Portrait of Victor H. Mair"
+        class="mx-auto mb-10 h-56 w-56 rounded-full object-cover shadow-lg ring-4 ring-parchment-deep ring-offset-4 ring-offset-parchment sm:h-64 sm:w-64"
+      />
+      <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gilt">In Memoriam</p>
+      <h1 class="mt-4 font-display text-5xl text-ink sm:text-6xl">Victor H. Mair</h1>
+      <p class="mt-3 font-display text-xl text-ink-soft">1943 – 2026</p>
+      <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+        Sinologist, teacher, and friend. For nearly four decades he held the chair of Chinese at the
+        University of Pennsylvania, and his work on the Tarim mummies and the ancient Silk Road
+        reshaped how we understand the earliest contacts between East and West.
+      </p>
+    </div>
+
+    <!-- Memorial banner -->
+    <div class="mx-auto max-w-4xl px-6 pb-16">
+      <div class="rounded-xl border border-gilt-soft/40 bg-parchment-deep/60 px-6 py-8 text-center shadow-sm sm:px-10">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gilt">Memorial Service</p>
+        <p class="mt-4 font-display text-2xl text-ink">Saturday, October 10, 2026</p>
+        <p class="mt-1 text-lg text-ink-soft">2:00 – 5:00 pm</p>
+        <p class="mt-4 text-ink">Swarthmore Friends Meeting Hall</p>
+        <p class="text-ink-soft">12 Whitter Place, Swarthmore, PA 19081</p>
+        <div class="mt-6 flex flex-col items-center gap-3">
+          <a
+            href="https://swarthmorefriendsmeeting.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-md bg-gilt px-6 py-2.5 text-sm font-semibold text-parchment transition-colors hover:bg-gilt-soft"
+          >
+            Swarthmore Friends Meeting ↗
+          </a>
+          <p class="text-xs italic text-ink-soft/80">
+            An obituary in <em>The Swarthmorean</em> will be linked here when the paper provides it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 1. BIOGRAPHIES ============ -->
+  <Section id="biographies" eyebrow="01" title="Biographies">
+    <LinkList items={biographies} />
+  </Section>
+
+  <!-- ============ 2. FAMILY ============ -->
+  <Section
+    id="family"
+    eyebrow="02"
+    title="Family History and Childhood"
+    lead="Stories and photographs from his early life are being gathered and will appear here soon."
+  >
+    <p class="text-ink-soft">
+      <em>Coming soon — family photos and a narrative are on their way.</em>
     </p>
-    <h1 class="text-5xl font-bold tracking-tight">
-      Hello, <span class="text-sky-400">world</span>
-    </h1>
-    <p class="text-lg text-slate-400">
-      This static site is ready to build on. Edit
-      <code class="rounded bg-slate-800 px-1.5 py-0.5 text-sm text-sky-300">src/pages/index.astro</code>
-      to make it yours.
+  </Section>
+
+  <!-- ============ 3. PERSONAL ============ -->
+  <Section id="personal" eyebrow="03" title="Personal Life">
+    <p class="text-ink-soft">
+      <em>A portrait of his interests and life beyond the classroom is being prepared.</em>
     </p>
-    <Counter client:load />
-  </main>
+  </Section>
+
+  <!-- ============ 4. EDUCATION ============ -->
+  <Section
+    id="education"
+    eyebrow="04"
+    title="Education and Degrees"
+    lead="From his CV. And the story of how five old, white men sent him toward the languages of Asia."
+  >
+    <blockquote class="mb-10 border-l-2 border-gilt-soft bg-parchment-deep/40 py-4 pl-5 pr-4 font-display text-[1.1rem] italic leading-relaxed text-ink">
+      “Mr. Mair, we would like to award you a Woodrow Wilson fellowship, but would you please consider
+      doing it in Asian Studies?”
+    </blockquote>
+    <div class="mb-10 max-w-3xl space-y-4 text-[1.05rem] leading-relaxed text-ink-soft">
+      <p>
+        When Mair graduated from Dartmouth in 1965, he joined the Peace Corps for two years in Nepal.
+        Though he contracted fifteen diseases — some quite serious — lost fifty pounds, and survived
+        three nearly deadly trail accidents, the experience was transformative.
+      </p>
+      <p>
+        He had been an English major and had written his undergraduate thesis on Chaucer’s
+        <em>“Troilus and Criseyde.”</em> Still, at the end of his Peace Corps service he wanted a PhD on
+        Chaucer. Among other applications, he sought a Woodrow Wilson fellowship — in those days (1967)
+        a very prestigious prize. Because he had applied outside the regular cycle, the Woodrow Wilson
+        Foundation set up a special interview at its headquarters in Princeton, New Jersey.
+      </p>
+      <p>
+        He entered the room to find himself facing, yes, five old, white men — professors of European
+        and American history, literature, and philosophy, all humanists. He launched into a monologue
+        about Chaucer. After five to ten minutes they interrupted him: “Mr. Mair, please tell us what
+        you learned in Nepal.”
+      </p>
+      <p>
+        Somewhat taken aback, he began to talk about Buddhism, Hinduism, shamanism, Hermann Hesse’s
+        <em>Siddhartha</em>, the Nepali language and Sanskrit, Indian art — and on and on. They were
+        fascinated. An hour later they asked him to wait outside while they deliberated. A few minutes
+        later they called him back with the offer quoted above.
+      </p>
+      <p>
+        Dumbfounded — he had never dreamed of a PhD in anything Asian — he asked for a couple of weeks
+        to think. Back home in Ohio he asked friends and teachers; they all encouraged him to accept
+        and to concentrate on Buddhism. The University of Washington (Seattle) then had the best
+        program of Buddhist studies, so that is where he went. “It was all thanks to those five old,
+        white men.”
+      </p>
+    </div>
+    <CVList items={education} />
+  </Section>
+
+  <!-- ============ 5. POSITIONS ============ -->
+  <Section id="positions" eyebrow="05" title="Positions">
+    <CVList items={positions} />
+  </Section>
+
+  <!-- ============ 6. PUBLICATIONS ============ -->
+  <Section
+    id="publications"
+    eyebrow="06"
+    title="Publications"
+    lead="Among his many books, The True History of Tea is the best known."
+  >
+    <LinkList items={publications} />
+  </Section>
+
+  <!-- ============ 7. TARIM MUMMIES ============ -->
+  <Section
+    id="tarim"
+    eyebrow="07"
+    title="The Tarim Mummies and the Silk Road Symposium"
+    lead="His signature research: the Bronze and Iron Age mummies of Eastern Central Asia, and the East–West exchange of antiquity."
+  >
+    <LinkList items={tarimMummies} />
+  </Section>
+
+  <!-- ============ 8. EDITORSHIPS ============ -->
+  <Section id="editorships" eyebrow="08" title="Editorships">
+    <LinkList items={editorships} />
+    <p class="mt-6 text-sm italic text-ink-soft">
+      He also evaluated manuscripts for half a dozen presses and an equal number of scholarly journals,
+      and reviewed books for half a dozen journals.
+    </p>
+  </Section>
+
+  <!-- ============ 9. INTERVIEWS ============ -->
+  <Section id="interviews" eyebrow="09" title="Interviews and Lectures">
+    <LinkList items={interviews} />
+  </Section>
+
+  <!-- ============ 10. CHINESE ============ -->
+  <Section
+    id="chinese"
+    eyebrow="10"
+    title="Chinese Websites, in Chinese"
+    lead="Coverage and conversation in 中文."
+  >
+    <LinkList items={chineseWebsites} />
+  </Section>
+
+  <!-- ============ 11. VIDEOS ============ -->
+  <Section id="videos" eyebrow="11" title="YouTube Videos">
+    <LinkList items={youtubeVideos} />
+  </Section>
+
+  <!-- ============ 12. AWARDS ============ -->
+  <Section
+    id="awards"
+    eyebrow="12"
+    title="Awards"
+    lead="Honorary degrees and recognitions — more to come."
+  >
+    <p class="text-ink-soft">
+      <em>A full list of his awards and honors is being compiled and will appear here.</em>
+    </p>
+  </Section>
+
+  <!-- ============ 13. TRIBUTES ============ -->
+  <Section
+    id="tributes"
+    eyebrow="13"
+    title="Tributes"
+    lead="In Memoriam and tributes from colleagues, students, and the wider scholarly world."
+  >
+    <LinkList items={tributes} />
+  </Section>
+
+  <!-- ============ THE SNAIL ============ -->
+  <div class="bg-ink py-16 text-parchment sm:py-20">
+    <div class="mx-auto max-w-3xl px-6 text-center">
+      <p class="text-4xl" aria-hidden="true">🐌</p>
+      <p class="mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gilt-soft">
+        His totem animal: the snail
+      </p>
+      <blockquote class="mt-8 font-display text-2xl italic leading-relaxed text-parchment/90">
+        {snailStory.quote}
+      </blockquote>
+      <p class="mt-8 text-sm text-parchment/70">
+        —
+        <a href={snailStory.url} target="_blank" rel="noopener noreferrer" class="text-gilt-soft hover:underline">
+          {snailStory.source} ↗
+        </a>
+      </p>
+    </div>
+  </div>
 </BaseLayout>

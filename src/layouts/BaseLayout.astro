@@ -3,8 +3,25 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  description?: string;
 }
-const { title } = Astro.props;
+const { title, description = 'A memorial to the sinologist Victor H. Mair (1943–2026).' } = Astro.props;
+
+const nav = [
+  ['biographies', 'Biographies'],
+  ['family', 'Family'],
+  ['personal', 'Personal'],
+  ['education', 'Education'],
+  ['positions', 'Positions'],
+  ['publications', 'Publications'],
+  ['tarim', 'Tarim Mummies'],
+  ['editorships', 'Editorships'],
+  ['interviews', 'Interviews'],
+  ['chinese', 'In Chinese'],
+  ['videos', 'Videos'],
+  ['awards', 'Awards'],
+  ['tributes', 'Tributes'],
+] as const;
 ---
 
 <!doctype html>
@@ -15,9 +32,56 @@ const { title } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
-    <slot />
+  <body class="min-h-screen bg-parchment font-sans text-ink antialiased">
+    <header class="sticky top-0 z-50 border-b border-parchment-deep bg-parchment/90 backdrop-blur">
+      <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
+        <a href="#top" class="font-display text-lg tracking-wide text-ink">
+          Victor H. Mair
+        </a>
+        <nav class="hidden items-center gap-x-5 lg:flex">
+          {
+            nav.map(([href, label]) => (
+              <a
+                href={`#${href}`}
+                class="text-sm text-ink-soft transition-colors hover:text-gilt"
+              >
+                {label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+      <nav
+        class="flex gap-5 overflow-x-auto whitespace-nowrap px-6 pb-3 lg:hidden"
+        aria-label="Sections"
+      >
+        {
+          nav.map(([href, label]) => (
+            <a href={`#${href}`} class="text-sm text-ink-soft hover:text-gilt">
+              {label}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+
+    <main id="top">
+      <slot />
+    </main>
+
+    <footer class="mt-10 border-t border-parchment-deep bg-parchment-deep/40">
+      <div class="mx-auto max-w-3xl px-6 py-10 text-center">
+        <p class="font-display text-lg text-ink">Victor H. Mair, 1943–2026</p>
+        <p class="mt-2 text-sm text-ink-soft">
+          Sinologist · Teacher · Friend — University of Pennsylvania
+        </p>
+        <p class="mt-6 text-xs text-ink-soft/70">
+          In loving memory. <a href="#tributes" class="text-gilt hover:underline">Tributes</a>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

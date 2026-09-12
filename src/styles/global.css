@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Cambria, Georgia, "Times New Roman", serif;
+
+  --color-parchment: #f6f3ec;
+  --color-parchment-deep: #ece6d8;
+  --color-ink: #24282f;
+  --color-ink-soft: #5b6270;
+  --color-gilt: #8c6d33;
+  --color-gilt-soft: #b09257;
+}
+
+html {
+  scroll-behavior: smooth;
+}
