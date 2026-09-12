@@ -10,6 +10,12 @@ export interface CVEntry {
   link?: string;
 }
 
+export interface VideoItem {
+  id: string;
+  title: string;
+  author: string;
+}
+
 export const biographies: LinkItem[] = [
   { title: 'Biographies.net — Biography of Victor H. Mair', url: 'https://www.biographies.net/people/en/victor_h_mair' },
   { title: 'Wikipedia — Victor H. Mair', url: 'https://en.wikipedia.org/wiki/Victor_H._Mair' },
@@ -91,11 +97,30 @@ export const chineseWebsites: LinkItem[] = [
   { title: 'NetEase 网易', url: 'https://www.163.com/dy/article/L0UKAP4D055660VM.html' },
 ];
 
-export const youtubeVideos: LinkItem[] = [
-  { title: 'YouTube video 1', url: 'https://www.youtube.com/watch?v=EST1jxqdIqg' },
-  { title: 'YouTube video 2', url: 'https://www.youtube.com/watch?v=aqylM4x1t4c' },
-  { title: 'YouTube video 3', url: 'https://www.youtube.com/watch?v=n9F19lYF7DY' },
-  { title: 'YouTube video 4', url: 'https://www.youtube.com/watch?v=0VxyQg_fvGc' },
+export const youtubeVideos: VideoItem[] = [
+  {
+    id: 'EST1jxqdIqg',
+    title: 'The East Asian Heartland and Its Bronze Age Connections',
+    author: 'Wolf Humanities Center',
+  },
+  {
+    id: 'aqylM4x1t4c',
+    title: 'Mirror Metaphor in Chinese Literature',
+    author: 'Israel Institute for Advanced Studies',
+  },
+  {
+    id: 'n9F19lYF7DY',
+    title: '2014 Wat Lecture: Changing Language in China',
+    author: 'UBC Asian Studies',
+  },
+  {
+    id: '0VxyQg_fvGc',
+    title: 'The Impact of the Internet on Chinese Language and Chinese Studies',
+    author: 'USNA Center for Regional Studies',
+  },
+];
+
+export const youtubeSearchLinks: LinkItem[] = [
   { title: 'Search YouTube — “Victor Mair”', url: 'https://www.youtube.com/results?search_query=Victor+Mair' },
   { title: 'Search YouTube — “梅維恆” (his Chinese name)', url: 'https://www.youtube.com/results?search_query=%E6%A2%85%E7%B6%AD%E6%81%86' },
 ];

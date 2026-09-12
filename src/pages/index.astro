@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 import LinkList from '../components/LinkList.astro';
 import CVList from '../components/CVList.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.tsx';
 import {
   biographies,
   education,
@@ -13,6 +14,7 @@ import {
   interviews,
   chineseWebsites,
   youtubeVideos,
+  youtubeSearchLinks,
   tributes,
   snailStory,
 } from '../data/mair';
@@ -183,8 +185,23 @@ import {
   </Section>
 
   <!-- ============ 11. VIDEOS ============ -->
-  <Section id="videos" eyebrow="11" title="YouTube Videos">
-    <LinkList items={youtubeVideos} />
+  <Section
+    id="videos"
+    eyebrow="11"
+    title="YouTube Videos"
+    lead="Watch his lectures and interviews, streamed from YouTube."
+  >
+    <div class="grid gap-8 sm:grid-cols-2">
+      {
+        youtubeVideos.map((video) => (
+          <YouTubeEmbed client:load id={video.id} title={video.title} author={video.author} />
+        ))
+      }
+    </div>
+    <div class="mt-10 border-t border-parchment-deep pt-6">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gilt">More on YouTube</p>
+      <LinkList items={youtubeSearchLinks} />
+    </div>
   </Section>
 
   <!-- ============ 12. AWARDS ============ -->
