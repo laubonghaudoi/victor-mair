@@ -35,6 +35,23 @@ export const education: CVEntry[] = [
   { years: '1965', detail: 'B.A., Dartmouth College — English Literature' },
 ];
 
+export const fiveOldWhiteMen = {
+  source: 'Language Log — “Five old, white men”',
+  url: 'https://languagelog.ldc.upenn.edu/nll/?p=59388',
+  intro: `I promised that I would tell the story of how five old, white men persuaded me to begin the study of Asian languages two years after I was out of college. Here it is.`,
+  paragraphs: [
+    `When I graduated from Dartmouth in 1965, I joined the Peace Corps for two years in Nepal. Although I contracted fifteen diseases, some quite serious, lost fifty pounds, and had three nearly deadly trail accidents, the experience was transformative.`,
+    `I was an English major in college and wrote an undergraduate thesis on Chaucer’s “Troilus and Criseyde”. At the end of my Peace Corps service, I still wanted to study for a PhD on Chaucer. So, among other applications to graduate school and for funding, I applied for a Woodrow Wilson fellowship. In those days (1967), that was a very prestigious prize.`,
+    `Because I had applied outside the regular cycle of the selection process, the Woodrow Wilson Foundation set up a special interview for me at their headquarters in Princeton, NJ. I entered the room and found myself facing, yes, five old, white men. I think they all had white hair. They were professors of European and American history, literature, and philosophy — all humanists.`,
+    `I began by launching into a monologue about how much I loved Chaucer and why I wanted to pursue a PhD focusing on him and his works. After I had been speaking for about 5-10 minutes, they interrupted me and said, “Mr. Mair, please tell us what you learned in Nepal.”`,
+    `Somewhat taken aback, I began to tell them about Buddhism, Hinduism, shamanism, Hermann Hesse and his Siddhartha, Nepali language and Sanskrit, Indian art, and so on and so forth. They were fascinated, captivated by all that I was saying.`,
+    `After about an hour, they said, “Mr. Mair, please wait outside while we deliberate for a few moments.” I waited for about five minutes, then they called me back and announced, “Mr. Mair, we would like to award you a Woodrow Wilson fellowship, but would you please consider doing it in Asian Studies?”`,
+    `I was dumbfounded. Never had I dreamed of reading for a PhD in anything Asian. Of course, I was honored that they deemed me worthy of a Woodrow Wilson fellowship, but the proposal to do it in Asian Studies came so suddenly and unexpectedly that I said to the five old, white men, “Please give me a couple of weeks to think it over.”`,
+    `So I went to my home in Ohio, where I hadn’t been for two years, and I asked around among friends and teachers how I should respond. They all encouraged me to accept the fellowship and concentrate on Buddhism. In those days, the University of Washington (Seattle) had the best program of Buddhist Studies, so that is where I decided to go.`,
+    `It was all thanks to those five old, white men.`,
+  ],
+};
+
 export const positions: CVEntry[] = [
   { years: '2012 (spring)', detail: 'Distinguished Visiting Sinologist, Peking University (Beijing)' },
   { years: '2011 (fall)', detail: 'Chen Yinke Distinguished Visiting Professor, Tsinghua University (Beijing)' },
@@ -79,6 +96,7 @@ export const editorships: LinkItem[] = [
   { title: 'Encounters with Asia (University of Pennsylvania Press)', url: '#', note: 'no link available' },
   { title: 'ABC Chinese Dictionary Series (University of Hawai’i Press)', url: '#', note: 'no link available' },
   { title: 'Cambria Sinophone World Series (Cambria Press)', url: '#', note: 'no link available' },
+  { title: 'Language Log — “Victor Mair RIP” (including the RIP post and comments from admirers far and wide)', url: 'https://languagelog.ldc.upenn.edu/nll/?p=73799' },
 ];
 
 export const interviews: LinkItem[] = [
@@ -139,8 +157,10 @@ export const tributes: LinkItem[] = [
 ];
 
 export const snailStory = {
+  intro:
+    'Victor Mair has a thing for snails. He has hundreds — most at home, with a handful strewn across his office on campus.',
   quote:
-    '“I was traveling through Europe teaching, but I also went to my mom’s ancestral village in the Swiss Alps for the first time,” he said. “I was wandering around the churchyard and I found this beautiful snail crawling around. Symbolically, they mean a lot to me. It takes determination for a snail to get across a gap.”',
+    '“I was traveling through Europe teaching, but I also went to my mom’s ancestral village in the Swiss Alps for the first time,” says the Professor of East Asian Languages and Civilizations, whose research on ancient cultures has taken him around the globe. “I was wandering around the churchyard and I found this beautiful snail crawling around. Symbolically, they mean a lot to me. It takes determination for a snail to get across a gap.”',
   source: 'Omnia: Windows on Asia — Penn Arts & Sciences',
   url: 'https://omnia.sas.upenn.edu/story/windows-asia',
 };
