@@ -1,0 +1,6 @@
+# The memorial site is public; every crawler — search engines and AI
+# assistants alike — is welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://victor-mair.liubanghoudai24.workers.dev/sitemap.xml

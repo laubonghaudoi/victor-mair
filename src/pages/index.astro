@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ChapterBand from '../components/ChapterBand.astro';
 import Photo from '../components/Photo.astro';
 import YouTubeEmbed from '../components/YouTubeEmbed.tsx';
+import { seo } from '../data/config';
 import {
   rich,
   chapters,
@@ -52,7 +53,7 @@ const navAttrs = (id: string) => {
 };
 ---
 
-<BaseLayout title="Victor H. Mair (1943–2026) — In Memoriam">
+<BaseLayout title={seo.title}>
   <!-- ============================ HERO ============================ -->
   <section class="hero" data-chapter {...navAttrs('top')}>
     <div class="hero__glow" aria-hidden="true"></div>

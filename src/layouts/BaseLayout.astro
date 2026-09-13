@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { siteConfig } from '../data/config';
+import { siteConfig, seo } from '../data/config';
 import { nav } from '../data/memorial';
 import { footer as foot } from '../data/prose';
 
@@ -9,10 +9,26 @@ interface Props {
   description?: string;
 }
 
-const {
-  title,
-  description = 'A memorial to the sinologist Victor H. Mair (1943–2026): East Canton, Nepal, Dunhuang, the Taklamakan, and forty-seven years at Penn.',
-} = Astro.props;
+const { title, description = seo.description } = Astro.props;
+const ogImage = new URL(seo.ogImage, seo.siteUrl).href;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: seo.person.name,
+  alternateName: seo.person.alternateName,
+  birthDate: seo.person.birthDate,
+  birthPlace: { '@type': 'Place', name: seo.person.birthPlace },
+  deathDate: seo.person.deathDate,
+  deathPlace: { '@type': 'Place', name: seo.person.deathPlace },
+  jobTitle: seo.person.jobTitle,
+  knownFor: [
+    'The Tarim Mummies',
+    'Wandering on the Way',
+    'The True History of Tea',
+    'Painting and Performance',
+  ],
+  sameAs: seo.person.sameAs,
+};
 ---
 
 <!doctype html>
@@ -23,8 +39,32 @@ const {
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
+    <meta name="theme-color" content="#2e211a" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${seo.siteUrl}/`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={seo.siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={`${seo.siteUrl}/`} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={seo.ogImageAlt} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / link previews -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link
