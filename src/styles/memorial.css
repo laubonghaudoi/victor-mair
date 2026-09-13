@@ -459,26 +459,28 @@
   width: 100%;
   height: auto;
 }
-.m-jacket--ch2 {
+/* The shadow belongs to the cover image, not the figure: the caption
+   below then reads as a clean label clear of the shadow. */
+.m-jacket--ch2 .m-jacket__img {
   box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.95);
 }
-.m-jacket--ch3 {
+.m-jacket--ch3 .m-jacket__img {
   box-shadow: 0 26px 52px -38px rgba(0, 0, 0, 0.95);
 }
-.m-jacket--ch4 {
-  box-shadow: 0 24px 48px -38px rgba(58, 44, 36, 0.85);
+.m-jacket--ch4 .m-jacket__img {
+  box-shadow: 0 16px 28px -20px rgba(58, 44, 36, 0.55);
 }
-.m-jacket--shelf {
-  box-shadow: 0 22px 44px -34px rgba(31, 27, 20, 0.8);
+.m-jacket--shelf .m-jacket__img {
+  box-shadow: 0 14px 26px -18px rgba(31, 27, 20, 0.5);
 }
 .m-jacket__cap {
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 14px;
   line-height: 1.75;
   color: var(--dim);
 }
 .m-jacket--shelf .m-jacket__cap {
-  margin-top: 11px;
+  margin-top: 13px;
   line-height: 1.7;
 }
 
