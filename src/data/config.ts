@@ -34,7 +34,7 @@ export const siteConfig = {
  * data. Rendered by src/layouts/BaseLayout.astro.
  */
 export const seo = {
-  siteUrl: 'https://victor-mair.liubanghoudai24.workers.dev',
+  siteUrl: 'https://victor-mair.com',
   siteName: 'Victor H. Mair — In Memoriam',
   title: 'Victor H. Mair (1943–2026) — In Memoriam | Sinologist, University of Pennsylvania',
   description:

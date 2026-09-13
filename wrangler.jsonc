@@ -4,6 +4,13 @@
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"name": "victor-mair",
 	"account_id": "b8115041c042b125ed83f7aaf5f99373",
+	"routes": [
+		{
+			"pattern": "victor-mair.com/*",
+			"zone_name": "victor-mair.com"
+		}
+	],
+	"workers_dev": true,
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
 		"directory": "./dist",

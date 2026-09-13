@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://victor-mair.liubanghoudai24.workers.dev/sitemap.xml
+Sitemap: https://victor-mair.com/sitemap.xml
