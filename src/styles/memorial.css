@@ -1,0 +1,1408 @@
+/* ================================================================== */
+/* Memorial — structural styles                                        */
+/*                                                                     */
+/* Every colour that varies between chapters is a CSS custom property   */
+/* set on the section (.hero / .ch1 … .ch7 / .coda). The structural      */
+/* classes below reference those variables, so the copy of each chapter  */
+/* can stay colour-agnostic. Values are transcribed verbatim from the    */
+/* approved v3 design prototype.                                        */
+/* ================================================================== */
+
+/* ------------------------------------------------------------------ */
+/* Per-section palette variables                                        */
+/* ------------------------------------------------------------------ */
+
+.hero {
+  --bg: #2e211a;
+  --ink: #f2ece2;
+  --h2: #fbf8f0;
+  --body: #f0e7d6;
+  --dim: #a99a8c;
+  --accent: #c1332e;
+}
+
+.ch1 {
+  --bg: #fbefc4;
+  --ink: #2a2419;
+  --h2: #2a2419;
+  --body: #453d2a;
+  --dim: #6b6047;
+  --accent: #a33f36;
+  --band-bg: #3a2e1c;
+  --band-ink: #fbefc4;
+  --band-eyebrow: #e5a093;
+  --band-zh: #c9bb96;
+  --band-years: #e5a093;
+  --cell-rule: rgba(42, 36, 25, 0.22);
+  --chip-rule: rgba(42, 36, 25, 0.28);
+  --chip-zh: #837754;
+  --mount-bg: #fefae8;
+  --img-bg: #efe3be;
+}
+
+.ch2 {
+  --bg: #061a4a;
+  --ink: #e6e2d8;
+  --h2: #fbf8f0;
+  --body: #c6c2b6;
+  --dim: #9aa3be;
+  --accent: #d9899b;
+  --band-rule: rgba(255, 255, 255, 0.16);
+  --band-eyebrow: #d9899b;
+  --band-zh: #9aa3be;
+  --band-years: #d9899b;
+  --pull-top: rgba(217, 137, 155, 0.55);
+  --pull-bottom: rgba(255, 255, 255, 0.16);
+  --pull-ink: #fbf8f0;
+  --essay-rule: rgba(255, 255, 255, 0.16);
+}
+
+.ch3 {
+  --bg: #4a1b30;
+  --ink: #efe4ea;
+  --h2: #fbf3f7;
+  --body: #dccbd4;
+  --dim: #b49aa8;
+  --accent: #a9bcd0;
+  --band-rule: rgba(255, 255, 255, 0.16);
+  --band-eyebrow: #a9bcd0;
+  --band-zh: #b49aa8;
+  --band-years: #a9bcd0;
+  --heading-rule: rgba(255, 255, 255, 0.32);
+  --def-rule: rgba(255, 255, 255, 0.14);
+  --def-year: #a9bcd0;
+  --stack-rule: rgba(169, 188, 208, 0.4);
+  --stack-year: #a9bcd0;
+  --stack-ink: #fbf3f7;
+  --stack-sub: #c9b4bf;
+  --lead-rule: rgba(255, 255, 255, 0.16);
+}
+
+.ch4 {
+  --bg: #d9d5c9;
+  --ink: #3a2c24;
+  --h2: #3a2c24;
+  --body: #46362c;
+  --dim: #6e6355;
+  --accent: #b02a2c;
+  --band-bg: #b02a2c;
+  --band-ink: #fbf1e8;
+  --band-eyebrow: #f6d3c2;
+  --band-zh: #f6d3c2;
+  --band-years: #f6d3c2;
+  --pull-top: rgba(176, 42, 44, 0.55);
+  --pull-bottom: rgba(58, 44, 36, 0.2);
+  --pull-ink: #2a1f18;
+  --heading-rule: rgba(58, 44, 36, 0.4);
+  --link-rule: rgba(58, 44, 36, 0.18);
+}
+
+.ch5 {
+  --bg: #f4f1e4;
+  --ink: #1f1b14;
+  --h2: #1f1b14;
+  --body: #302a20;
+  --dim: #6b6558;
+  --accent: #06755c;
+  --band-bg: #06755c;
+  --band-ink: #f0faf5;
+  --band-eyebrow: #b8e3d4;
+  --band-zh: #b8e3d4;
+  --band-years: #b8e3d4;
+  --heading-rule: rgba(31, 27, 20, 0.4);
+  --row-rule: rgba(31, 27, 20, 0.16);
+  --row-year: #7a7466;
+  --title-rule: rgba(31, 27, 20, 0.18);
+  --title-ink: #1f1b14;
+}
+
+.ch6 {
+  --bg: #24454a;
+  --ink: #e8e4d8;
+  --h2: #fbf8f0;
+  --body: #c3c0b4;
+  --dim: #93a8a9;
+  --accent: #e8b33c;
+  --band-rule: rgba(255, 255, 255, 0.16);
+  --band-eyebrow: #e8b33c;
+  --band-zh: #93a8a9;
+  --band-years: #e8b33c;
+  --heading-rule: rgba(255, 255, 255, 0.32);
+  --def-rule: rgba(255, 255, 255, 0.14);
+  --def-year: #93a8a9;
+  --def-year-lead: #e8b33c;
+  --link-rule: rgba(255, 255, 255, 0.14);
+  --lead-rule: rgba(255, 255, 255, 0.16);
+}
+
+.ch7 {
+  --bg: #d7ddc6;
+  --ink: #232a1e;
+  --h2: #232a1e;
+  --body: #323a2a;
+  --dim: #5f6851;
+  --accent: #3d6461;
+  --band-rule: rgba(35, 42, 30, 0.22);
+  --band-eyebrow: #2f5350;
+  --band-zh: #5f6851;
+  --band-years: #2f5350;
+  --heading-rule: rgba(35, 42, 30, 0.4);
+  --link-rule: rgba(35, 42, 30, 0.18);
+  --quote-rule: #3d6461;
+  --note-rule: rgba(35, 42, 30, 0.22);
+}
+
+.coda {
+  --bg: #f1e0cc;
+  --ink: #2a241c;
+  --body: #3c3529;
+  --dim: #6e6252;
+  --accent: #9a3a31;
+  --line-ink: #a33f36;
+  --mount-bg: #fbf3e6;
+  --img-bg: #e6d7c0;
+}
+
+.site-footer {
+  --bg: #2e211a;
+  --ink: #f2ece2;
+  --foot-ink: #fbf8f0;
+  --foot-zh: #c4b7a8;
+  --foot-dim: #a99a8c;
+  --foot-link: #e07a62;
+  --foot-note: #8a7c6e;
+  --foot-rule: rgba(255, 255, 255, 0.16);
+}
+
+/* ------------------------------------------------------------------ */
+/* Progress bar + header                                              */
+/* ------------------------------------------------------------------ */
+
+.m-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: #c1332e;
+  z-index: 60;
+  transition: background 0.7s ease;
+}
+
+.m-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(46, 33, 26, 0.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  transition: background 0.7s ease, border-color 0.7s ease;
+}
+
+.m-header__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(18px, 4vw, 52px);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.m-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  flex: none;
+  color: #f2ece2;
+  transition: color 0.7s ease;
+}
+.m-brand__en {
+  font-size: 17px;
+  letter-spacing: 0.02em;
+}
+.m-brand__zh {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  opacity: 0.62;
+}
+
+.m-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(9px, 1.4vw, 20px);
+  min-width: 0;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.m-nav a {
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  padding: 8px 0;
+  border-bottom: 1px solid transparent;
+  color: #a99a8c;
+  transition: color 0.4s ease;
+}
+
+/* ------------------------------------------------------------------ */
+/* Chapter bands                                                       */
+/* ------------------------------------------------------------------ */
+
+.m-band--solid {
+  background: var(--band-bg);
+  color: var(--band-ink);
+}
+.m-band--rule {
+  border-bottom: 1px solid var(--band-rule);
+  position: relative;
+  z-index: 1;
+}
+
+.m-band__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(20px, 2.6vw, 30px) clamp(20px, 5vw, 52px);
+  display: flex;
+  align-items: baseline;
+  gap: clamp(16px, 3vw, 36px);
+  flex-wrap: wrap;
+}
+.m-band__eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--band-eyebrow);
+}
+.m-band__title {
+  font-size: clamp(16px, 1.6vw, 19px);
+  letter-spacing: 0.08em;
+}
+.m-band__zh {
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  color: var(--band-zh);
+}
+.m-band__years {
+  margin-left: auto;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  color: var(--band-years);
+}
+
+/* ------------------------------------------------------------------ */
+/* Lead container                                                      */
+/* ------------------------------------------------------------------ */
+
+.m-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(48px, 6.5vw, 96px) clamp(20px, 5vw, 52px) 0;
+}
+.m-wrap--mid {
+  padding-top: clamp(44px, 6vw, 84px);
+}
+.m-wrap--gap {
+  margin: clamp(48px, 6.5vw, 92px) auto 0;
+  padding: 0 clamp(20px, 5vw, 52px);
+}
+.m-wrap--gap2 {
+  margin: clamp(44px, 6vw, 80px) auto 0;
+  padding: 0 clamp(20px, 5vw, 52px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Headings + text                                                     */
+/* ------------------------------------------------------------------ */
+
+.m-h2 {
+  margin: 0;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.18;
+  letter-spacing: -0.008em;
+  max-width: 20ch;
+  color: var(--h2, inherit);
+  text-wrap: pretty;
+}
+
+.m-lead {
+  margin: 0;
+  font-size: clamp(18px, 1.4vw, 20px);
+  line-height: 1.85;
+  color: var(--body);
+  text-wrap: pretty;
+}
+.m-body {
+  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.85;
+  color: var(--body);
+  text-wrap: pretty;
+}
+.m-credit {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--dim);
+}
+.m-credit a {
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.m-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  border-bottom: 1px solid var(--heading-rule);
+  padding-bottom: 14px;
+  flex-wrap: wrap;
+}
+.m-heading__title {
+  margin: 0;
+  font-size: clamp(21px, 2vw, 28px);
+  color: var(--h2, inherit);
+}
+.m-heading__zh {
+  font-size: 16px;
+  letter-spacing: 0.16em;
+  color: var(--dim);
+}
+.m-heading__note {
+  margin-left: auto;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--dim);
+}
+
+/* ------------------------------------------------------------------ */
+/* Figures — mounts + images                                           */
+/* ------------------------------------------------------------------ */
+
+.m-photo {
+  margin: 0;
+}
+.m-photo--parallax {
+  will-change: transform;
+}
+
+.m-mount {
+  background: var(--mount-bg, #fefae8);
+  padding: 10px;
+  box-shadow:
+    0 1px 0 rgba(42, 36, 25, 0.12),
+    0 24px 48px -40px rgba(42, 36, 25, 0.6);
+}
+.m-mount--light {
+  box-shadow: 0 1px 0 rgba(42, 36, 25, 0.12);
+}
+.m-mount--plate {
+  padding: clamp(10px, 1.2vw, 15px);
+  box-shadow:
+    0 1px 0 rgba(42, 36, 25, 0.12),
+    0 30px 62px -46px rgba(42, 36, 25, 0.6);
+}
+.m-mount--tarim {
+  background: #efece3;
+  box-shadow:
+    0 1px 0 rgba(58, 44, 36, 0.12),
+    0 24px 48px -38px rgba(58, 44, 36, 0.7);
+}
+.m-mount--coda {
+  background: var(--mount-bg);
+  padding: 8px;
+  box-shadow: 0 1px 0 rgba(42, 36, 28, 0.14);
+}
+.m-mount--hero {
+  background: #3b2c22;
+  padding: clamp(10px, 1.2vw, 15px);
+  box-shadow: 0 40px 80px -50px rgba(0, 0, 0, 0.9);
+}
+
+.m-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.m-img--crop {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.m-img--portrait {
+  object-position: 50% 20%;
+}
+
+.m-figcap {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--dim);
+}
+
+/* ------------------------------------------------------------------ */
+/* Book jackets                                                        */
+/* ------------------------------------------------------------------ */
+
+.m-jacket {
+  margin: 0;
+}
+.m-jacket__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.m-jacket--ch2 {
+  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.95);
+}
+.m-jacket--ch3 {
+  box-shadow: 0 26px 52px -38px rgba(0, 0, 0, 0.95);
+}
+.m-jacket--ch4 {
+  box-shadow: 0 24px 48px -38px rgba(58, 44, 36, 0.85);
+}
+.m-jacket--shelf {
+  box-shadow: 0 22px 44px -34px rgba(31, 27, 20, 0.8);
+}
+.m-jacket__cap {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--dim);
+}
+.m-jacket--shelf .m-jacket__cap {
+  margin-top: 11px;
+  line-height: 1.7;
+}
+
+/* ------------------------------------------------------------------ */
+/* Pull quotes                                                         */
+/* ------------------------------------------------------------------ */
+
+.m-pull {
+  margin: 0;
+  border-top: 1px solid var(--pull-top);
+  border-bottom: 1px solid var(--pull-bottom);
+  padding: clamp(26px, 3.4vw, 42px) 0;
+}
+.m-pull p {
+  margin: 0;
+  max-width: 30ch;
+  font-size: clamp(24px, 3.2vw, 42px);
+  line-height: 1.32;
+  letter-spacing: -0.006em;
+  color: var(--pull-ink);
+  text-wrap: pretty;
+}
+.m-pull--wide p {
+  max-width: 34ch;
+  font-size: clamp(24px, 3vw, 40px);
+}
+.m-pull footer {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--dim);
+}
+
+/* ------------------------------------------------------------------ */
+/* Def rows — degrees / positions                                      */
+/* ------------------------------------------------------------------ */
+
+.m-defgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  column-gap: clamp(32px, 5vw, 68px);
+}
+.m-defgrid--degrees {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+.m-defrow {
+  display: grid;
+  grid-template-columns: clamp(92px, 10vw, 124px) 1fr;
+  border-bottom: 1px solid var(--def-rule);
+  padding: 16px 0;
+  align-items: baseline;
+}
+.m-defgrid--positions .m-defrow {
+  grid-template-columns: clamp(96px, 10vw, 128px) 1fr;
+}
+.m-defrow--link {
+  grid-template-columns: clamp(96px, 10vw, 128px) 1fr auto;
+}
+.m-defrow__year {
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--def-year);
+}
+.m-defgrid--positions .m-defrow__year {
+  letter-spacing: 0.04em;
+}
+.m-defrow__year--lead {
+  color: var(--def-year-lead, var(--def-year));
+}
+.m-defrow__detail {
+  font-size: 17.5px;
+  line-height: 1.6;
+}
+.m-defrow__arrow {
+  font-size: 14px;
+  color: var(--def-year);
+}
+.m-defnote {
+  border-bottom: 1px solid var(--def-rule);
+  padding: 16px 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--dim);
+}
+
+/* ------------------------------------------------------------------ */
+/* Link rows                                                           */
+/* ------------------------------------------------------------------ */
+
+.m-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  column-gap: clamp(32px, 5vw, 68px);
+}
+.m-links--narrow {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: clamp(32px, 5vw, 68px);
+}
+.m-links--single {
+  display: block;
+}
+.m-linkrow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--link-rule);
+}
+.m-linkrow__label {
+  font-size: 17.5px;
+  line-height: 1.6;
+}
+.m-linkrow--zh .m-linkrow__label {
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+.m-linkrow__note {
+  font-size: 13.5px;
+  color: var(--dim);
+}
+.m-linkrow__arrow {
+  font-size: 14px;
+  color: var(--dim);
+}
+
+/* ------------------------------------------------------------------ */
+/* Book rows (selected books / editorships)                            */
+/* ------------------------------------------------------------------ */
+
+.m-bookrow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--row-rule);
+}
+.m-bookrow__title {
+  font-size: 17.5px;
+  line-height: 1.6;
+}
+.m-bookrow__note {
+  color: var(--dim);
+}
+.m-bookrow__year {
+  font-size: 15px;
+  color: var(--row-year);
+}
+.m-bookrow__arrow {
+  font-size: 14px;
+  color: var(--row-year);
+}
+
+/* ------------------------------------------------------------------ */
+/* Stack cards (chapter Ⅲ)                                             */
+/* ------------------------------------------------------------------ */
+
+.m-stackcard {
+  border: 1px solid var(--stack-rule);
+  padding: clamp(20px, 2.4vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.m-stackcard__year {
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  color: var(--stack-year);
+}
+.m-stackcard__title {
+  font-size: clamp(18px, 1.7vw, 21px);
+  line-height: 1.45;
+  color: var(--stack-ink);
+}
+.m-stackcard__sub {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--stack-sub);
+}
+
+/* ------------------------------------------------------------------ */
+/* Essay (chapter Ⅱ — CSS multicolumn)                                 */
+/* ------------------------------------------------------------------ */
+
+.m-essay {
+  columns: 2 330px;
+  column-gap: clamp(32px, 5vw, 68px);
+  max-width: 1020px;
+}
+.m-essay p {
+  margin: 0 0 1.2em;
+  font-size: 17.5px;
+  line-height: 1.9;
+  color: var(--body);
+  text-wrap: pretty;
+  break-inside: avoid-column;
+}
+.m-essay p:last-child {
+  margin: 0;
+  font-size: 19px;
+  color: var(--h2);
+}
+
+.m-essay-source {
+  margin-top: clamp(28px, 3.5vw, 44px);
+  padding-top: 18px;
+  border-top: 1px solid var(--essay-rule);
+}
+.m-essay-source a {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------------ */
+/* "In his own titles" + note rules (chapter Ⅴ / Ⅲ / Ⅵ)                */
+/* ------------------------------------------------------------------ */
+
+.m-note-rule {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--title-rule, var(--lead-rule));
+}
+.m-note-rule--dim {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--dim);
+}
+.m-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.m-titles__label {
+  font-size: 12.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.m-titles a {
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--title-ink);
+}
+
+.m-inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+.m-inline-links a {
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.m-sources {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--dim);
+  text-wrap: pretty;
+}
+.m-sources--body {
+  color: var(--body);
+}
+
+/* ------------------------------------------------------------------ */
+/* Chips                                                               */
+/* ------------------------------------------------------------------ */
+
+.m-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px dashed var(--chip-rule);
+  padding: 8px 14px;
+}
+.m-chip__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.m-chip__en {
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.m-chip__zh {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--chip-zh);
+}
+
+/* ------------------------------------------------------------------ */
+/* End-of-chapter cells (chapter Ⅰ)                                    */
+/* ------------------------------------------------------------------ */
+
+.m-cell {
+  border-top: 1px solid var(--cell-rule);
+  padding-top: 20px;
+}
+.m-cell__label {
+  font-size: 12.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* ------------------------------------------------------------------ */
+/* Language Log card (chapter Ⅴ)                                       */
+/* ------------------------------------------------------------------ */
+
+.m-logcard {
+  margin-top: clamp(34px, 4.5vw, 56px);
+  background: #1f1b14;
+  color: #efe9dd;
+  padding: clamp(26px, 3.2vw, 40px);
+}
+.m-logcard__label {
+  font-size: 12.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #6fc4a8;
+  margin-bottom: 16px;
+}
+.m-logcard__body {
+  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.9;
+  color: #cfc7b8;
+  text-wrap: pretty;
+}
+.m-logcard blockquote {
+  margin: 20px 0 0;
+  padding-left: 18px;
+  border-left: 1px solid #6fc4a8;
+}
+.m-logcard blockquote p {
+  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.85;
+  color: #f0faf5;
+  font-style: italic;
+  text-wrap: pretty;
+}
+.m-logcard blockquote footer {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #948c80;
+}
+.m-logcard__link {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: #6fc4a8;
+}
+
+/* ------------------------------------------------------------------ */
+/* Lectures on film (chapter Ⅵ)                                        */
+/* ------------------------------------------------------------------ */
+
+.m-lecture {
+  display: block;
+}
+.m-lecture__thumb {
+  overflow: hidden;
+  background: #2c5157;
+  aspect-ratio: 16 / 9;
+}
+.m-lecture__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.m-lecture__title {
+  margin-top: 13px;
+  font-size: 17.5px;
+  line-height: 1.6;
+}
+.m-lecture__source {
+  margin-top: 7px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+/* ------------------------------------------------------------------ */
+/* Blockquote (chapter Ⅶ — Denis Mair)                                 */
+/* ------------------------------------------------------------------ */
+
+.m-quote {
+  margin: 24px 0 0;
+  padding-left: 18px;
+  border-left: 1px solid var(--quote-rule);
+}
+.m-quote p {
+  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.85;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.m-quote footer {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--dim);
+}
+
+/* ------------------------------------------------------------------ */
+/* "On this page" note (chapter Ⅶ)                                     */
+/* ------------------------------------------------------------------ */
+
+.m-yearbook-note {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--dim);
+  max-width: 70ch;
+}
+
+.m-onpage {
+  margin-top: clamp(30px, 4vw, 46px);
+  border-top: 1px solid var(--note-rule);
+  padding-top: 20px;
+}
+.m-onpage__label {
+  font-size: 12.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.m-onpage__body {
+  margin: 14px 0 0;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero                                                                */
+/* ------------------------------------------------------------------ */
+
+.hero {
+  position: relative;
+  background: var(--bg);
+  color: var(--ink);
+  padding: clamp(52px, 8vw, 104px) 0 clamp(52px, 7vw, 92px);
+  overflow: hidden;
+}
+.hero__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(112% 84% at 76% 6%, rgba(193, 51, 46, 0.18), transparent 58%);
+  pointer-events: none;
+}
+.hero__inner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 52px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(36px, 6vw, 80px);
+  align-items: center;
+}
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(30px, 4vw, 44px);
+  flex-wrap: wrap;
+}
+.hero__line {
+  width: 36px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero__eyebrow-en {
+  font-size: 12.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #e07a62;
+}
+.hero__eyebrow-zh {
+  font-size: 13.5px;
+  letter-spacing: 0.24em;
+  color: var(--dim);
+}
+.hero__name {
+  margin: 0;
+  font-family: 'Cormorant Garamond', KuMincho, 'Noto Serif TC', serif;
+  font-weight: 300;
+  font-size: clamp(50px, 7.4vw, 100px);
+  line-height: 0.98;
+  letter-spacing: 0.004em;
+  color: #fbf8f0;
+}
+.hero__meta {
+  margin-top: clamp(20px, 2.6vw, 30px);
+  display: flex;
+  align-items: baseline;
+  gap: clamp(20px, 3vw, 34px);
+  flex-wrap: wrap;
+}
+.hero__zh {
+  font-size: clamp(28px, 3.6vw, 46px);
+  letter-spacing: 0.16em;
+  color: #e3d6c4;
+}
+.hero__dates {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--dim);
+}
+.hero__quote {
+  margin: clamp(30px, 3.6vw, 44px) 0 0;
+  max-width: 56ch;
+}
+.hero__zh-quote {
+  margin: 0;
+  font-size: clamp(19px, 1.9vw, 25px);
+  line-height: 2.05;
+  letter-spacing: 0.055em;
+  color: #f0e7d6;
+  text-wrap: pretty;
+}
+.hero__en-quote {
+  margin: clamp(24px, 2.8vw, 32px) 0 0;
+  font-size: clamp(18px, 1.5vw, 21px);
+  line-height: 1.85;
+  color: #d6ccbe;
+  text-wrap: pretty;
+}
+.hero__credit {
+  margin-top: 16px;
+  font-size: 14.5px;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: var(--dim);
+}
+.hero__figure {
+  margin: 0;
+}
+.hero__figcap {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: var(--dim);
+}
+
+.hero__info {
+  position: relative;
+  max-width: 1280px;
+  margin: clamp(48px, 7vw, 88px) auto 0;
+  padding: 0 clamp(20px, 5vw, 52px);
+}
+.hero__info-grid {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: clamp(28px, 3.6vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(24px, 4vw, 52px);
+}
+.hero__cell-label {
+  font-size: 12.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero__cell-label--accent {
+  color: #e07a62;
+}
+.hero__cell-label--dim {
+  color: var(--dim);
+}
+.hero__cell-value {
+  font-size: clamp(21px, 2vw, 26px);
+  line-height: 1.45;
+  color: #fbf8f0;
+}
+.hero__cell-value--sm {
+  font-size: clamp(19px, 1.8vw, 23px);
+  line-height: 1.5;
+}
+.hero__cell-sub {
+  margin-top: 10px;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: #c4b7a8;
+}
+.hero__cell-sub--addr {
+  letter-spacing: 0;
+  line-height: 1.75;
+}
+.hero__cell-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: #e07a62;
+  border-bottom: 1px solid rgba(224, 122, 98, 0.42);
+  padding-bottom: 3px;
+}
+.hero__cell-body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.85;
+  color: #c4b7a8;
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------ */
+/* Coda (chapter Ⅶ — his totem animal)                                 */
+/* ------------------------------------------------------------------ */
+
+.coda {
+  margin-top: clamp(56px, 7.5vw, 104px);
+  background: var(--bg);
+  color: var(--ink);
+  padding: clamp(52px, 7vw, 104px) 0;
+}
+.coda__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 52px);
+}
+.coda__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(24px, 3vw, 36px);
+  flex-wrap: wrap;
+}
+.coda__line {
+  width: 36px;
+  height: 1px;
+  background: var(--line-ink);
+}
+.coda__eyebrow-en {
+  font-size: 12.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.coda__eyebrow-zh {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+}
+.coda__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(32px, 5vw, 68px);
+  align-items: start;
+}
+.coda__title {
+  margin: 0;
+  font-size: clamp(26px, 3.2vw, 44px);
+  line-height: 1.24;
+  letter-spacing: -0.006em;
+  max-width: 21ch;
+  text-wrap: pretty;
+}
+.coda__credit {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--dim);
+}
+.coda__credit a {
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.coda__quote {
+  margin: clamp(24px, 3vw, 34px) 0 0;
+  padding-left: clamp(18px, 2vw, 26px);
+  border-left: 1px solid var(--line-ink);
+  max-width: 58ch;
+}
+.coda__quote p {
+  margin: 0;
+  font-size: clamp(17.5px, 1.4vw, 19px);
+  line-height: 1.9;
+  color: var(--body);
+  text-wrap: pretty;
+}
+.coda__link {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.coda__figs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Footer                                                              */
+/* ------------------------------------------------------------------ */
+
+.site-footer {
+  background: var(--bg);
+  color: var(--ink);
+  padding: clamp(52px, 7vw, 100px) 0 clamp(36px, 4.5vw, 56px);
+}
+.site-footer__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 52px);
+}
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(28px, 4vw, 60px);
+  align-items: end;
+}
+.site-footer__name {
+  font-family: 'Cormorant Garamond', KuMincho, 'Noto Serif TC', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 3.8vw, 52px);
+  line-height: 1.1;
+  letter-spacing: 0.004em;
+  color: var(--foot-ink);
+}
+.site-footer__meta {
+  margin-top: 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.site-footer__zh {
+  font-size: clamp(19px, 2vw, 26px);
+  letter-spacing: 0.16em;
+  color: var(--foot-zh);
+}
+.site-footer__years {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  color: var(--foot-dim);
+}
+.site-footer__bio {
+  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.85;
+  color: #d6ccbe;
+  max-width: 38ch;
+  text-wrap: pretty;
+}
+.site-footer__quote {
+  margin: 10px 0 0;
+  font-size: 17.5px;
+  line-height: 1.85;
+  color: var(--foot-dim);
+  text-wrap: pretty;
+}
+.site-footer__quote a {
+  color: var(--foot-link);
+}
+.site-footer__tribute {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--foot-link);
+}
+.site-footer__bar {
+  margin-top: clamp(36px, 5vw, 72px);
+  padding-top: 20px;
+  border-top: 1px solid var(--foot-rule);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.site-footer__note {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--foot-note);
+}
+.site-footer__top {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--foot-note);
+}
+
+/* ------------------------------------------------------------------ */
+/* Shared section shell                                                */
+/* ------------------------------------------------------------------ */
+
+.chapter {
+  scroll-margin-top: 64px;
+  background: var(--bg);
+  color: var(--ink);
+  padding-bottom: clamp(60px, 8vw, 108px);
+}
+.ch2 {
+  position: relative;
+  overflow: hidden;
+}
+.ch2__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(100% 66% at 18% 100%, rgba(114, 40, 68, 0.5), transparent 64%);
+  pointer-events: none;
+}
+.ch7 {
+  padding-bottom: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Two-column lead (h2 + quote)                                        */
+/* ------------------------------------------------------------------ */
+
+.m-leads {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.m-zh-spaced {
+  letter-spacing: 0.12em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Gap + margin utilities                                              */
+/* (named without a dash so they never collide with Tailwind's mt-*)   */
+/* ------------------------------------------------------------------ */
+
+.g44-84 { margin-top: clamp(44px, 6vw, 84px); }
+.g44-80 { margin-top: clamp(44px, 6vw, 80px); }
+.g48-92 { margin-top: clamp(48px, 6.5vw, 92px); }
+.g48-88 { margin-top: clamp(48px, 6.5vw, 88px); }
+.g40-68 { margin-top: clamp(40px, 5vw, 68px); }
+.g36-60 { margin-top: clamp(36px, 4.5vw, 60px); }
+.g34-56 { margin-top: clamp(34px, 4.5vw, 56px); }
+.g28-44 { margin-top: clamp(28px, 3.5vw, 44px); }
+
+.mt10 { margin-top: 10px; }
+.mt14 { margin-top: 14px; }
+.mt16 { margin-top: 16px; }
+.mt18 { margin-top: 18px; }
+.mt20 { margin-top: 20px; }
+.mt22 { margin-top: 22px; }
+.mt24 { margin-top: 24px; }
+
+/* ------------------------------------------------------------------ */
+/* Chapter figure grids (transcribed from the prototype)              */
+/* ------------------------------------------------------------------ */
+
+.m-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: clamp(20px, 3vw, 36px); }
+.m-yearbooks { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: clamp(20px, 3vw, 36px); }
+.m-cells { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(24px, 4vw, 52px); }
+.m-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.m-stackgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: clamp(20px, 3vw, 32px); align-items: start; }
+.m-stack { display: flex; flex-direction: column; gap: clamp(16px, 2vw, 22px); }
+.m-tarimfigs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(20px, 3vw, 34px); align-items: start; }
+.m-shelfgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: clamp(20px, 2.6vw, 32px); align-items: start; }
+.m-bookcols { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: clamp(32px, 5vw, 68px); align-items: start; }
+.m-lecturegrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(20px, 3vw, 30px); }
+
+/* Dimmed body text (chapter-specific notes). */
+.m-body--dim { color: var(--dim); }
+
+/* Dimmed note without the top rule (chapter Ⅴ lead). */
+.m-note--dim {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--dim);
+}
+
+/* ------------------------------------------------------------------ */
+/* Lectures on film — playable embeds (YouTube IFrame API)            */
+/* ------------------------------------------------------------------ */
+
+.m-lecture--embed { display: block; }
+.m-lecture__thumb { position: relative; }
+.m-lecture__thumb iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.m-lecture__thumbbtn {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+.m-lecture__playdot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.28);
+  transition: background 0.3s ease;
+}
+.m-lecture__playdot svg {
+  width: 46px;
+  height: 46px;
+  fill: #fbf8f0;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.55));
+}
+.m-lecture__thumbbtn:hover .m-lecture__playdot { background: rgba(0, 0, 0, 0.45); }
+.m-lecture__thumbbtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.m-lecture__fallback {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}

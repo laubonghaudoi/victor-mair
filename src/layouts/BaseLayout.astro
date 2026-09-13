@@ -1,27 +1,18 @@
 ---
 import '../styles/global.css';
+import { siteConfig } from '../data/config';
+import { nav } from '../data/memorial';
+import { footer as foot } from '../data/prose';
 
 interface Props {
   title: string;
   description?: string;
 }
-const { title, description = 'A memorial to the sinologist Victor H. Mair (1943–2026).' } = Astro.props;
 
-const nav = [
-  ['biographies', 'Biographies'],
-  ['family', 'Family'],
-  ['personal', 'Personal'],
-  ['education', 'Education'],
-  ['positions', 'Positions'],
-  ['publications', 'Publications'],
-  ['tarim', 'Tarim Mummies'],
-  ['editorships', 'Editorships'],
-  ['interviews', 'Interviews'],
-  ['chinese', 'In Chinese'],
-  ['videos', 'Videos'],
-  ['awards', 'Awards'],
-  ['tributes', 'Tributes'],
-] as const;
+const {
+  title,
+  description = 'A memorial to the sinologist Victor H. Mair (1943–2026): East Canton, Nepal, Dunhuang, the Taklamakan, and forty-seven years at Penn.',
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -30,58 +21,69 @@ const nav = [
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+TC:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="min-h-screen bg-parchment font-sans text-ink antialiased">
-    <header class="sticky top-0 z-50 border-b border-parchment-deep bg-parchment/90 backdrop-blur">
-      <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
-        <a href="#top" class="font-display text-lg tracking-wide text-ink">
-          Victor H. Mair
+  <body data-motion={siteConfig.motion} data-archival-tone={siteConfig.archivalTone}>
+    <div class="m-progress" data-progress=""></div>
+
+    <header class="m-header" data-header="">
+      <div class="m-header__inner">
+        <a href="#top" class="m-brand" data-brand="">
+          <span class="m-brand__en">Victor H. Mair</span>
+          <span class="m-brand__zh">梅維恆</span>
         </a>
-        <nav class="hidden items-center gap-x-5 lg:flex">
+        <nav class="m-nav" aria-label="Chapters">
           {
-            nav.map(([href, label]) => (
-              <a
-                href={`#${href}`}
-                class="text-sm text-ink-soft transition-colors hover:text-gilt"
-              >
-                {label}
+            nav.map((item) => (
+              <a href={`#${item.id}`} data-navlink={item.id}>
+                {item.label}
               </a>
             ))
           }
         </nav>
       </div>
-      <nav
-        class="flex gap-5 overflow-x-auto whitespace-nowrap px-6 pb-3 lg:hidden"
-        aria-label="Sections"
-      >
-        {
-          nav.map(([href, label]) => (
-            <a href={`#${href}`} class="text-sm text-ink-soft hover:text-gilt">
-              {label}
-            </a>
-          ))
-        }
-      </nav>
     </header>
 
     <main id="top">
       <slot />
     </main>
 
-    <footer class="mt-10 border-t border-parchment-deep bg-parchment-deep/40">
-      <div class="mx-auto max-w-3xl px-6 py-10 text-center">
-        <p class="font-display text-lg text-ink">Victor H. Mair, 1943–2026</p>
-        <p class="mt-2 text-sm text-ink-soft">
-          Sinologist · Teacher · Friend — University of Pennsylvania
-        </p>
-        <p class="mt-6 text-xs text-ink-soft/70">
-          In loving memory. <a href="#tributes" class="text-gilt hover:underline">Tributes</a>
-        </p>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__grid">
+          <div>
+            <div class="site-footer__name">{foot.name}</div>
+            <div class="site-footer__meta">
+              <span class="site-footer__zh">{foot.zh}</span>
+              <span class="site-footer__years">{foot.years}</span>
+            </div>
+          </div>
+          <div>
+            <p class="site-footer__bio">{foot.bio}</p>
+            <p class="site-footer__quote" set:html={foot.quote} />
+            <a class="site-footer__tribute" href="#ch7">
+              {foot.tribute}
+            </a>
+          </div>
+        </div>
+        <div class="site-footer__bar">
+          <span class="site-footer__note">{foot.barNote}</span>
+          <a class="site-footer__top" href="#top">
+            {foot.barTop}
+          </a>
+        </div>
       </div>
     </footer>
+
+    <script src="../scripts/memorial.ts" />
   </body>
 </html>

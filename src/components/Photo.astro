@@ -1,0 +1,78 @@
+---
+import { rich } from '../data/memorial';
+
+interface Props {
+    src: string;
+    alt: string;
+    /** Placeholder colour shown while the image loads. */
+    imgBg?: string;
+    caption?: string;
+    mountVariant?: "std" | "light" | "plate" | "tarim" | "coda" | "hero";
+    /** Tones the image with the archival filter. */
+    archival?: boolean;
+    /** Applies the slow parallax drift (only two elements on the page use this). */
+    parallax?: boolean;
+    /** Extra classes for the <img> (e.g. 'm-img--crop m-img--portrait'). */
+    imgClass?: string;
+    /** Reveal delay step. When `parallax` is also set it moves to a wrapper div,
+     *  so the reveal transform and the parallax transform never fight over the
+     *  same element. */
+    reveal?: number;
+}
+
+const {
+    src,
+    alt,
+    imgBg,
+    caption,
+    mountVariant = "std",
+    archival = false,
+    parallax = false,
+    imgClass,
+    reveal,
+} = Astro.props;
+
+// A parallax figure must not also carry data-reveal (both write style.transform).
+const wrapped = parallax && reveal !== undefined;
+const figReveal = !parallax && reveal !== undefined ? reveal : undefined;
+---
+
+{wrapped ? (
+    <div data-reveal={reveal}>
+        <figure class="m-photo m-photo--parallax" data-parallax="0.05">
+            <div
+                class:list={["m-mount", `m-mount--${mountVariant}`]}
+                data-archival={archival ? "" : undefined}
+            >
+                <img
+                    class:list={["m-img", imgClass]}
+                    src={src}
+                    alt={alt}
+                    style={imgBg ? `background:${imgBg}` : undefined}
+                />
+            </div>
+            {caption ? (
+                <figcaption class="m-figcap" set:html={rich(caption)} />
+            ) : null}
+        </figure>
+    </div>
+) : (
+    <figure
+        class:list={["m-photo", { "m-photo--parallax": parallax }]}
+        data-parallax={parallax ? "0.05" : undefined}
+        data-reveal={figReveal}
+    >
+        <div
+            class:list={["m-mount", `m-mount--${mountVariant}`]}
+            data-archival={archival ? "" : undefined}
+        >
+            <img
+                class:list={["m-img", imgClass]}
+                src={src}
+                alt={alt}
+                style={imgBg ? `background:${imgBg}` : undefined}
+            />
+        </div>
+        {caption ? <figcaption class="m-figcap" set:html={rich(caption)} /> : null}
+    </figure>
+)}

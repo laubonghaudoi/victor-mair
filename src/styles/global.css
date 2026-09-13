@@ -1,16 +1,50 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import './memorial.css';
 
-@theme {
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Cambria, Georgia, "Times New Roman", serif;
+/* ------------------------------------------------------------------ */
+/* Type                                                                */
+/* ------------------------------------------------------------------ */
 
-  --color-parchment: #f6f3ec;
-  --color-parchment-deep: #ece6d8;
-  --color-ink: #24282f;
-  --color-ink-soft: #5b6270;
-  --color-gilt: #8c6d33;
-  --color-gilt-soft: #b09257;
+@font-face {
+  font-family: 'KuMincho';
+  src: url('/fonts/KuMincho-R.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
+
+/* ------------------------------------------------------------------ */
+/* Reset                                                               */
+/* ------------------------------------------------------------------ */
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #2e211a;
+  color: #f2ece2;
+  -webkit-font-smoothing: antialiased;
+  font-family: KuMincho, 'Noto Serif TC', 'Songti TC', serif;
+  font-weight: 400;
+  overflow-x: clip;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c1332e;
+}
+
+::selection {
+  background: #c1332e;
+  color: #fbf8f0;
 }

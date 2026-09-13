@@ -1,242 +1,785 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Section from '../components/Section.astro';
-import LinkList from '../components/LinkList.astro';
-import CVList from '../components/CVList.astro';
+import ChapterBand from '../components/ChapterBand.astro';
+import Photo from '../components/Photo.astro';
 import YouTubeEmbed from '../components/YouTubeEmbed.tsx';
 import {
-  biographies,
-  education,
-  fiveOldWhiteMen,
+  rich,
+  chapters,
+  degrees,
   positions,
-  publications,
-  tarimMummies,
+  selectedBooks,
   editorships,
-  interviews,
-  chineseWebsites,
-  youtubeVideos,
-  youtubeSearchLinks,
+  shelf,
+  tarimLinks,
   tributes,
-  snailStory,
-} from '../data/mair';
+  chinesePress,
+  reference,
+  interviews,
+  hisTitles,
+  booksLinks,
+  youtubeLinks,
+  lectures,
+} from '../data/memorial';
+import {
+  hero,
+  ch1,
+  ch2,
+  ch2Essay,
+  ch3,
+  ch4,
+  ch5,
+  ch6,
+  ch7,
+  coda,
+  navPalettes,
+} from '../data/prose';
+
+const meta: Record<string, (typeof chapters)[number]> = Object.fromEntries(
+  chapters.map((c) => [c.id, c])
+);
+
+/** data-nav-* palette the client script paints the header with per section. */
+const navAttrs = (id: string) => {
+  const p = navPalettes[id];
+  return {
+    'data-nav-bg': p.bg,
+    'data-nav-ink': p.ink,
+    'data-nav-rule': p.rule,
+    'data-nav-dim': p.dim,
+    'data-nav-accent': p.accent,
+  };
+};
 ---
 
 <BaseLayout title="Victor H. Mair (1943–2026) — In Memoriam">
-  <!-- ============ HERO ============ -->
-  <div class="relative overflow-hidden">
-    <div class="mx-auto max-w-4xl px-6 pt-16 pb-12 text-center sm:pt-24">
-      <img
-        src="/mair-portrait.jpg"
-        alt="Portrait of Victor H. Mair"
-        class="mx-auto mb-10 h-56 w-56 rounded-full object-cover shadow-lg ring-4 ring-parchment-deep ring-offset-4 ring-offset-parchment sm:h-64 sm:w-64"
-      />
-      <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gilt">In Memoriam</p>
-      <h1 class="mt-4 font-display text-5xl text-ink sm:text-6xl">Victor H. Mair</h1>
-      <p class="mt-3 font-display text-xl text-ink-soft">1943 – 2026</p>
-      <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
-        Sinologist, teacher, and friend. For nearly four decades he held the chair of Chinese at the
-        University of Pennsylvania, and his work on the Tarim mummies and the ancient Silk Road
-        reshaped how we understand the earliest contacts between East and West.
-      </p>
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" data-chapter {...navAttrs('top')}>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <div>
+        <div class="hero__eyebrow">
+          <span class="hero__line" aria-hidden="true"></span>
+          <span class="hero__eyebrow-en">{hero.eyebrowEn}</span>
+          <span class="hero__eyebrow-zh">{hero.eyebrowZh}</span>
+        </div>
+        <h1 class="hero__name">{hero.name}</h1>
+        <div class="hero__meta">
+          <span class="hero__zh">{hero.zh}</span>
+          <div class="hero__dates">
+            <span>{hero.born}</span>
+            <span>{hero.died}</span>
+          </div>
+        </div>
+        <div class="hero__quote">
+          <p class="hero__zh-quote">{hero.quoteZh}</p>
+          <p class="hero__en-quote">{hero.quoteEn}</p>
+          <div class="hero__credit" set:html={rich(hero.credit)} />
+        </div>
+      </div>
+      <figure class="hero__figure" data-parallax="0.05">
+        <div class="m-mount m-mount--hero">
+          <img class="m-img" src="/images/vic-river.jpg" alt="Victor Mair beside a river" style="background: #46352A" />
+        </div>
+        <figcaption class="hero__figcap" set:html={rich(hero.figcap)} />
+      </figure>
     </div>
 
-    <!-- Memorial banner -->
-    <div class="mx-auto max-w-4xl px-6 pb-16">
-      <div class="rounded-xl border border-gilt-soft/40 bg-parchment-deep/60 px-6 py-8 text-center shadow-sm sm:px-10">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gilt">Memorial Service</p>
-        <p class="mt-4 font-display text-2xl text-ink">Saturday, October 10, 2026</p>
-        <p class="mt-1 text-lg text-ink-soft">2:00 – 5:00 pm</p>
-        <p class="mt-4 text-ink">Swarthmore Friends Meeting Hall</p>
-        <p class="text-ink-soft">12 Whitter Place, Swarthmore, PA 19081</p>
-        <div class="mt-6 flex flex-col items-center gap-3">
-          <a
-            href="https://swarthmorefriendsmeeting.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="rounded-md bg-gilt px-6 py-2.5 text-sm font-semibold text-parchment transition-colors hover:bg-gilt-soft"
-          >
-            Swarthmore Friends Meeting ↗
+    <div class="hero__info">
+      <div class="hero__info-grid" data-reveal="0">
+        <div>
+          <div class="hero__cell-label hero__cell-label--accent">{hero.serviceLabel}</div>
+          <div class="hero__cell-value">{hero.serviceValue}</div>
+          <div class="hero__cell-sub">{hero.serviceSub}</div>
+        </div>
+        <div>
+          <div class="hero__cell-label hero__cell-label--dim">{hero.locLabel}</div>
+          <div class="hero__cell-value hero__cell-value--sm">{hero.locValue}</div>
+          <div class="hero__cell-sub hero__cell-sub--addr">{hero.locSub}</div>
+          <a class="hero__cell-link" href="https://swarthmorefriendsmeeting.org/" target="_blank" rel="noopener">
+            {hero.locLinklabel}
           </a>
-          <p class="text-xs italic text-ink-soft/80">
-            An obituary in <em>The Swarthmorean</em> will be linked here when the paper provides it.
-          </p>
+        </div>
+        <div>
+          <div class="hero__cell-label hero__cell-label--dim">{hero.obitLabel}</div>
+          <p class="hero__cell-body" set:html={rich(hero.obitBody)} />
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ============ 1. BIOGRAPHIES ============ -->
-  <Section id="biographies" eyebrow="01" title="Biographies">
-    <LinkList items={biographies} />
-  </Section>
+  <!-- ====================== CHAPTER Ⅰ · OHIO ====================== -->
+  <section id="ch1" class="chapter ch1" data-chapter {...navAttrs('ch1')}>
+    <ChapterBand meta={meta.ch1} variant="solid" />
 
-  <!-- ============ 2. FAMILY ============ -->
-  <Section
-    id="family"
-    eyebrow="02"
-    title="Family History and Childhood"
-    lead="Stories and photographs from his early life are being gathered and will appear here soon."
-  >
-    <p class="text-ink-soft">
-      <em>Coming soon — family photos and a narrative are on their way.</em>
-    </p>
-  </Section>
+    <div class="m-wrap">
+      <div class="m-leads" data-reveal="0">
+        <h2 class="m-h2" set:html={rich(ch1.leadH2)} />
+        <div>
+          <p class="m-lead" set:html={rich(ch1.leadQ1)} />
+          <p class="m-body mt20" set:html={rich(ch1.leadQ2)} />
+          <div class="m-credit mt16" set:html={rich(ch1.credit)} />
+        </div>
+      </div>
 
-  <!-- ============ 3. PERSONAL ============ -->
-  <Section id="personal" eyebrow="03" title="Personal Life">
-    <p class="text-ink-soft">
-      <em>A portrait of his interests and life beyond the classroom is being prepared.</em>
-    </p>
-  </Section>
+      <div class="m-photos g44-84">
+        <Photo
+          src="/images/portrait-1965.jpg"
+          alt="Victor Mair as a young man, c. 1965"
+          imgBg="#EFE3BE"
+          caption="Dartmouth College, c. 1965."
+          imgClass="m-img--crop m-img--portrait"
+          archival
+          reveal={0}
+        />
+        <Photo
+          src="/images/dr-j-mural.jpg"
+          alt="Victor Mair shooting a basketball toward a mural of Julius Erving"
+          imgBg="#EFE3BE"
+          caption="Shooting to Dr. J, Philadelphia."
+          imgClass="m-img--crop"
+          reveal={1}
+        />
+        <Photo
+          src="/images/vic-glove.png"
+          alt="Victor Mair sitting on the grass with a baseball glove"
+          imgBg="#EFE3BE"
+          caption="A glove, a lawn, an afternoon."
+          imgClass="m-img--crop"
+          reveal={2}
+        />
+      </div>
+    </div>
 
-  <!-- ============ 4. EDUCATION ============ -->
-  <Section
-    id="education"
-    eyebrow="04"
-    title="Education and Degrees"
-    lead="From his CV. And the story of how five old, white men sent him toward the languages of Asia."
-  >
-    <blockquote class="mb-10 border-l-2 border-gilt-soft bg-parchment-deep/40 py-4 pl-5 pr-4 font-display text-[1.1rem] italic leading-relaxed text-ink">
-      “Mr. Mair, we would like to award you a Woodrow Wilson fellowship, but would you please consider
-      doing it in Asian Studies?”
-    </blockquote>
-    <div class="mb-10 max-w-3xl space-y-4 text-[1.05rem] leading-relaxed text-ink-soft">
-      <p class="font-display text-[1.1rem] italic text-ink">{fiveOldWhiteMen.intro}</p>
-      {fiveOldWhiteMen.paragraphs.map((paragraph) => (
-        <p>{paragraph}</p>
-      ))}
-      <p class="text-sm text-ink-soft/80">
-        — Told at
-        <a
-          href={fiveOldWhiteMen.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gilt hover:underline"
-        >
-          {fiveOldWhiteMen.source} ↗
+    <div class="m-wrap--gap">
+      <Photo
+        src="/images/french-horns-1961.jpg"
+        alt="Four high-school French horn players, April 1961"
+        imgBg="#EFE3BE"
+        caption="April 1961 — the East Canton horn section."
+        mountVariant="plate"
+        archival
+        parallax
+        reveal={0}
+      />
+    </div>
+
+    <div class="m-wrap--mid">
+      <div class="m-yearbooks">
+        <Photo
+          src="/images/yearbook-varsity-1961.jpg"
+          alt="1961 varsity basketball yearbook page"
+          imgBg="#EFE3BE"
+          mountVariant="light"
+          archival
+          reveal={0}
+        />
+        <Photo
+          src="/images/yearbook-starting-five-1961.jpg"
+          alt="1961 starting five seniors yearbook page"
+          imgBg="#EFE3BE"
+          mountVariant="light"
+          archival
+          reveal={1}
+        />
+      </div>
+      <div class="m-yearbook-note" set:html={rich(ch1.yearbookNote)} />
+    </div>
+
+    <div class="m-wrap--mid">
+      <div class="m-cells">
+        <div class="m-cell" data-reveal="0">
+          <div class="m-cell__label" set:html={rich(ch1.familyLabel)} />
+          <p class="m-body mt14" set:html={rich(ch1.familyBody)} />
+          <div class="m-chip mt16">
+            <span class="m-chip__dot" aria-hidden="true"></span>
+            <span class="m-chip__en">Coming soon</span>
+            <span class="m-chip__zh">整理中</span>
+          </div>
+        </div>
+        <div class="m-cell" data-reveal="1">
+          <div class="m-cell__label" set:html={rich(ch1.personalLabel)} />
+          <p class="m-body mt14" set:html={rich(ch1.personalQ1)} />
+          <div class="m-credit mt10" set:html={rich(ch1.personalC1)} />
+          <p class="m-body mt18" set:html={rich(ch1.personalQ2)} />
+          <div class="m-credit mt10" set:html={rich(ch1.personalC2)} />
+          <div class="m-chip mt16">
+            <span class="m-chip__dot" aria-hidden="true"></span>
+            <span class="m-chip__en">Coming soon</span>
+            <span class="m-chip__zh">整理中</span>
+          </div>
+        </div>
+        <Photo
+          src="/images/family-walk.jpg"
+          alt="Victor Mair walking with his wife and young son"
+          imgBg="#EFE3BE"
+          caption="With his family."
+          reveal={2}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== CHAPTER Ⅱ · NEPAL ====================== -->
+  <section id="ch2" class="chapter ch2" data-chapter {...navAttrs('ch2')}>
+    <ChapterBand meta={meta.ch2} variant="rule" />
+    <div class="ch2__overlay" aria-hidden="true"></div>
+
+    <div class="m-wrap">
+      <div class="m-leads" data-reveal="0">
+        <h2 class="m-h2" set:html={rich(ch2.leadH2)} />
+        <div>
+          <p class="m-lead" set:html={rich(ch2.leadQ)} />
+          <div class="m-credit mt14" set:html={rich(ch2.credit)} />
+          <p class="m-body m-body--dim mt22" set:html={rich(ch2.leadBody)} />
+        </div>
+      </div>
+    </div>
+
+    <div class="m-wrap--gap2">
+      <div class="m-pair" data-reveal="0">
+        <figure class="m-jacket m-jacket--ch2" style="max-width: 320px">
+          <img
+            class="m-jacket__img"
+            src="/images/covers/wandering-on-the-way.png"
+            alt="Cover of Wandering on the Way"
+            style="background: #0B2050"
+          />
+          <figcaption class="m-jacket__cap" set:html={rich(ch2.jacketCap)} />
+        </figure>
+        <blockquote class="m-pull">
+          <p set:html={rich(ch2.pull)} />
+        </blockquote>
+      </div>
+
+      <div class="m-essay g36-60" data-reveal="1">
+        {ch2Essay.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <div class="m-essay-source" data-reveal="0">
+        <a href="https://languagelog.ldc.upenn.edu/nll/?p=59388" target="_blank" rel="noopener">
+          {ch2.essaySource}
         </a>
-        .
-      </p>
+      </div>
     </div>
-    <CVList items={education} />
-  </Section>
+  </section>
 
-  <!-- ============ 5. POSITIONS ============ -->
-  <Section id="positions" eyebrow="05" title="Positions">
-    <CVList items={positions} />
-  </Section>
+  <!-- ==================== CHAPTER Ⅲ · TUN-HUANG ==================== -->
+  <section id="ch3" class="chapter ch3" data-chapter {...navAttrs('ch3')}>
+    <ChapterBand meta={meta.ch3} variant="rule" />
 
-  <!-- ============ 6. PUBLICATIONS ============ -->
-  <Section
-    id="publications"
-    eyebrow="06"
-    title="Publications"
-    lead="Among his many books, The True History of Tea is the best known."
-  >
-    <LinkList items={publications} />
-  </Section>
+    <div class="m-wrap">
+      <div class="m-leads" data-reveal="0">
+        <h2 class="m-h2" set:html={rich(ch3.leadH2)} />
+        <div>
+          <p class="m-lead" set:html={rich(ch3.leadQ1)} />
+          <div class="m-credit mt14" set:html={rich(ch3.credit1)} />
+          <p class="m-lead mt22" set:html={rich(ch3.leadQ2)} />
+          <div class="m-credit mt14" set:html={rich(ch3.credit2)} />
+          <div class="m-note-rule m-note-rule--dim" set:html={rich(ch3.leadNote)} />
+        </div>
+      </div>
 
-  <!-- ============ 7. TARIM MUMMIES ============ -->
-  <Section
-    id="tarim"
-    eyebrow="07"
-    title="The Tarim Mummies and the Silk Road Symposium"
-    lead="His signature research: the Bronze and Iron Age mummies of Eastern Central Asia, and the East–West exchange of antiquity."
-  >
-    <LinkList items={tarimMummies} />
-  </Section>
+      <div class="m-stackgrid g44-80" data-reveal="1">
+        <figure class="m-jacket m-jacket--ch3">
+          <img
+            class="m-jacket__img"
+            src="/images/covers/tun-huang-popular-narratives.png"
+            alt="Cover of Tun-huang Popular Narratives"
+            style="background: #5A2740"
+          />
+          <figcaption class="m-jacket__cap" set:html={rich(ch3.jacket1Cap)} />
+        </figure>
+        <figure class="m-jacket m-jacket--ch3">
+          <img
+            class="m-jacket__img"
+            src="/images/covers/tang-transformation-texts.png"
+            alt="Cover of T'ang Transformation Texts"
+            style="background: #7E93AA"
+          />
+          <figcaption class="m-jacket__cap" set:html={rich(ch3.jacket2Cap)} />
+        </figure>
+        <div class="m-stack">
+          {[
+            [ch3.stack1Year, ch3.stack1Title, ch3.stack1Sub],
+            [ch3.stack2Year, ch3.stack2Title, ch3.stack2Sub],
+            [ch3.stack3Year, ch3.stack3Title, ch3.stack3Sub],
+          ].map(([year, title, sub]) => (
+            <div class="m-stackcard">
+              <span class="m-stackcard__year">{year}</span>
+              <span class="m-stackcard__title">{title}</span>
+              <span class="m-stackcard__sub" set:html={rich(sub)} />
+            </div>
+          ))}
+        </div>
+      </div>
 
-  <!-- ============ 8. EDITORSHIPS ============ -->
-  <Section id="editorships" eyebrow="08" title="Editorships">
-    <LinkList items={editorships} />
-    <p class="mt-6 text-sm italic text-ink-soft">
-      He also evaluated manuscripts for half a dozen presses and an equal number of scholarly journals,
-      and reviewed books for half a dozen journals.
-    </p>
-  </Section>
-
-  <!-- ============ 9. INTERVIEWS ============ -->
-  <Section id="interviews" eyebrow="09" title="Interviews and Lectures">
-    <LinkList items={interviews} />
-    <p class="mt-8 max-w-3xl text-[1.05rem] leading-relaxed text-ink-soft">
-      Throughout the 1990s, Mair organized an interdisciplinary research project on the Bronze Age and
-      Iron Age mummies of Eastern Central Asia. Among the results of that work were three documentaries
-      for television (Scientific American, NOVA and Discovery Channel), a major international
-      conference, numerous articles, and the book
-      <em>The Tarim Mummies: Ancient China and the Mystery of the Earliest Peoples from the West</em>
-      (2000).
-    </p>
-  </Section>
-
-  <!-- ============ 10. CHINESE ============ -->
-  <Section
-    id="chinese"
-    eyebrow="10"
-    title="Chinese Websites, in Chinese"
-    lead="Coverage and conversation in 中文."
-  >
-    <LinkList items={chineseWebsites} />
-  </Section>
-
-  <!-- ============ 11. VIDEOS ============ -->
-  <Section
-    id="videos"
-    eyebrow="11"
-    title="YouTube Videos"
-    lead="Watch his lectures and interviews, streamed from YouTube."
-  >
-    <div class="grid gap-8 sm:grid-cols-2">
-      {
-        youtubeVideos.map((video) => (
-          <YouTubeEmbed client:load id={video.id} title={video.title} author={video.author} />
-        ))
-      }
+      <div class="g48-92" data-reveal="0">
+        <div class="m-heading">
+          <h3 class="m-heading__title">Degrees</h3>
+          <span class="m-heading__zh">學歷</span>
+        </div>
+        <div class="m-defgrid m-defgrid--degrees">
+          <div>
+            {
+              degrees.left.map((row) =>
+                row.dim ? (
+                  <div class="m-defnote" set:html={rich(row.detail ?? '')} />
+                ) : (
+                  <div class="m-defrow">
+                    <span class:list={['m-defrow__year', { 'm-defrow__year--lead': row.lead }]}>
+                      {row.years}
+                    </span>
+                    <span class="m-defrow__detail" set:html={rich(row.detail ?? '')} />
+                  </div>
+                )
+              )
+            }
+          </div>
+          <div>
+            {
+              degrees.right.map((row) =>
+                row.dim ? (
+                  <div class="m-defnote" set:html={rich(row.detail ?? '')} />
+                ) : (
+                  <div class="m-defrow">
+                    <span class:list={['m-defrow__year', { 'm-defrow__year--lead': row.lead }]}>
+                      {row.years}
+                    </span>
+                    <span class="m-defrow__detail" set:html={rich(row.detail ?? '')} />
+                  </div>
+                )
+              )
+            }
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="mt-10 border-t border-parchment-deep pt-6">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gilt">More on YouTube</p>
-      <LinkList items={youtubeSearchLinks} />
-    </div>
-  </Section>
+  </section>
 
-  <!-- ============ 12. AWARDS ============ -->
-  <Section
-    id="awards"
-    eyebrow="12"
-    title="Awards"
-    lead="Honorary degrees and recognitions — more to come."
-  >
-    <p class="text-ink-soft">
-      <em>A full list of his awards and honors is being compiled and will appear here.</em>
-    </p>
-  </Section>
+  <!-- ====================== CHAPTER Ⅳ · TARIM ====================== -->
+  <section id="ch4" class="chapter ch4" data-chapter {...navAttrs('ch4')}>
+    <ChapterBand meta={meta.ch4} variant="solid" />
 
-  <!-- ============ 13. TRIBUTES ============ -->
-  <Section
-    id="tributes"
-    eyebrow="13"
-    title="Tributes"
-    lead="In Memoriam and tributes from colleagues, students, and the wider scholarly world."
-  >
-    <LinkList items={tributes} />
-  </Section>
+    <div class="m-wrap">
+      <div class="m-leads" data-reveal="0">
+        <h2 class="m-h2" set:html={rich(ch4.leadH2)} />
+        <div>
+          <p class="m-lead" set:html={rich(ch4.leadQ1)} />
+          <p class="m-body mt18" set:html={rich(ch4.leadQ2)} />
+          <div class="m-credit mt14" set:html={rich(ch4.credit)} />
+          <p class="m-body m-body--dim mt20" set:html={rich(ch4.leadBody)} />
+        </div>
+      </div>
 
-  <!-- ============ THE SNAIL ============ -->
-  <div class="bg-ink py-16 text-parchment sm:py-20">
-    <div class="mx-auto max-w-3xl px-6 text-center">
-      <p class="text-4xl" aria-hidden="true">🐌</p>
-      <p class="mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-gilt-soft">
-        His totem animal: the snail
-      </p>
-      <p class="mt-6 text-base leading-relaxed text-parchment/80">{snailStory.intro}</p>
-      <blockquote class="mt-6 font-display text-2xl italic leading-relaxed text-parchment/90">
-        {snailStory.quote}
+      <blockquote class="m-pull m-pull--wide g40-68" data-reveal="1">
+        <p set:html={rich(ch4.pull)} />
+        <footer set:html={rich(ch4.pullFooter)} />
       </blockquote>
-      <p class="mt-8 text-sm text-parchment/70">
-        —
-        <a href={snailStory.url} target="_blank" rel="noopener noreferrer" class="text-gilt-soft hover:underline">
-          {snailStory.source} ↗
-        </a>
-      </p>
+
+      <div class="m-tarimfigs g44-80" data-reveal="1">
+        <figure class="m-jacket m-jacket--ch4">
+          <img
+            class="m-jacket__img"
+            src="/images/covers/tarim-mummies.png"
+            alt="Cover of The Tarim Mummies"
+            style="background: #CFCAC0"
+          />
+          <figcaption class="m-jacket__cap" set:html={rich(ch4.jacket1Cap)} />
+        </figure>
+        <figure class="m-jacket m-jacket--ch4">
+          <img
+            class="m-jacket__img"
+            src="/images/covers/reconfiguring-the-silk-road.png"
+            alt="Cover of Reconfiguring the Silk Road"
+            style="background: #CFCAC0"
+          />
+          <figcaption class="m-jacket__cap" set:html={rich(ch4.jacket2Cap)} />
+        </figure>
+        <Photo
+          src="/images/clipping-white-mummies.jpg"
+          alt="Newspaper clipping: Prof finds white mummies in China"
+          imgBg="#CFCAC0"
+          caption={ch4.clipCap}
+          mountVariant="tarim"
+        />
+      </div>
+
+      <div class="g48-88" data-reveal="0">
+        <div class="m-heading">
+          <h3 class="m-heading__title">The mummies &amp; the Silk Road Symposium</h3>
+          <span class="m-heading__zh">絲路</span>
+        </div>
+        <div class="m-links">
+          {
+            tarimLinks.map((link) => (
+              <a class="m-linkrow" href={link.url} target="_blank" rel="noopener">
+                <span
+                  class="m-linkrow__label"
+                  set:html={
+                    rich(link.label) + (link.note ? `<span class="m-linkrow__note">${link.note}</span>` : '')
+                  }
+                />
+                <span class="m-linkrow__arrow">↗</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ======================= CHAPTER Ⅴ · BOOKS ====================== -->
+  <section id="ch5" class="chapter ch5" data-chapter {...navAttrs('ch5')}>
+    <ChapterBand meta={meta.ch5} variant="solid" />
+
+    <div class="m-wrap">
+      <div class="m-leads" data-reveal="0">
+        <h2 class="m-h2" set:html={rich(ch5.leadH2)} />
+        <div>
+          <div class="m-note--dim" set:html={rich(ch5.leadNote)} />
+          <p class="m-lead mt22" set:html={rich(ch5.leadQ)} />
+          <div class="m-credit mt14" set:html={rich(ch5.credit)} />
+          <div class="m-note-rule m-titles">
+            <span class="m-titles__label">In his own titles</span>
+            {
+              hisTitles.map((link) => (
+                <a href={link.url} target="_blank" rel="noopener" set:html={rich(link.label) + ' ↗'} />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="g44-80" data-reveal="1">
+        <div class="m-heading" style="margin-bottom: clamp(26px, 3.4vw, 40px)">
+          <h3 class="m-heading__title">A shelf</h3>
+          <span class="m-heading__zh">著作</span>
+          <span class="m-heading__note">{ch5.shelfNote}</span>
+        </div>
+        <div class="m-shelfgrid">
+          {
+            shelf.map((item) => (
+              <figure class="m-jacket m-jacket--shelf">
+                <img class="m-jacket__img" src={item.src} alt={item.alt} style={`background: ${item.bg}`} />
+                <figcaption class="m-jacket__cap" set:html={rich(item.caption)} />
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="m-bookcols g48-88">
+        <div data-reveal="0">
+          <div class="m-heading">
+            <h3 class="m-heading__title">Selected books</h3>
+            <span class="m-heading__zh">書目</span>
+          </div>
+          {
+            selectedBooks.map((book) => (
+              <div class="m-bookrow">
+                <span
+                  class="m-bookrow__title"
+                  set:html={
+                    rich(book.title) + (book.note ? ` <span class="m-bookrow__note">${book.note}</span>` : '')
+                  }
+                />
+                <span class="m-bookrow__year">{book.year}</span>
+              </div>
+            ))
+          }
+          <p class="m-sources" set:html={rich(ch5.booksNote)} />
+          <div class="m-inline-links mt18">
+            {
+              booksLinks.map((link) => (
+                <a href={link.url} target="_blank" rel="noopener" set:html={rich(link.label) + ' ↗'} />
+              ))
+            }
+          </div>
+        </div>
+
+        <div>
+          <div data-reveal="1">
+            <div class="m-heading">
+              <h3 class="m-heading__title">Editorships</h3>
+              <span class="m-heading__zh">編務</span>
+            </div>
+            {
+              editorships.map((entry) =>
+                entry.link ? (
+                  <a class="m-bookrow" href={entry.link} target="_blank" rel="noopener">
+                    <span
+                      class="m-bookrow__title"
+                      set:html={
+                        rich(entry.title) + (entry.note ? ` <span class="m-bookrow__note">${entry.note}</span>` : '')
+                      }
+                    />
+                    <span class="m-bookrow__arrow">↗</span>
+                  </a>
+                ) : (
+                  <div class="m-bookrow">
+                    <span
+                      class="m-bookrow__title"
+                      set:html={
+                        rich(entry.title) + (entry.note ? ` <span class="m-bookrow__note">${entry.note}</span>` : '')
+                      }
+                    />
+                  </div>
+                )
+              )
+            }
+            <p class="m-sources m-sources--body" set:html={rich(ch5.editorsNote)} />
+          </div>
+
+          <div class="m-logcard" data-reveal="2">
+            <div class="m-logcard__label">{ch5.logLabel}</div>
+            <p class="m-logcard__body" set:html={rich(ch5.logBody)} />
+            <blockquote>
+              <p set:html={rich(ch5.logQuote)} />
+              <footer set:html={rich(ch5.logFooter)} />
+            </blockquote>
+            <a
+              class="m-logcard__link"
+              href="https://languagelog.ldc.upenn.edu/nll/?p=73799"
+              target="_blank"
+              rel="noopener"
+            >
+              {ch5.logLink}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CHAPTER Ⅵ · PENN ====================== -->
+  <section id="ch6" class="chapter ch6" data-chapter {...navAttrs('ch6')}>
+    <ChapterBand meta={meta.ch6} variant="rule" />
+
+    <div class="m-wrap">
+      <div class="m-leads" data-reveal="0">
+        <h2 class="m-h2" set:html={rich(ch6.leadH2)} />
+        <div>
+          <p class="m-lead" set:html={rich(ch6.leadQ1)} />
+          <p class="m-body mt18" set:html={rich(ch6.leadQ2)} />
+          <div class="m-credit mt14" set:html={rich(ch6.credit)} />
+          <div class="m-note-rule m-note-rule--dim" set:html={rich(ch6.leadNote)} />
+        </div>
+      </div>
+
+      <div class="g44-80" data-reveal="1">
+        <div class="m-heading">
+          <h3 class="m-heading__title">Positions</h3>
+          <span class="m-heading__zh">職務</span>
+        </div>
+        <div class="m-defgrid m-defgrid--positions">
+          <div>
+            {
+              positions.left.map((row) =>
+                row.link ? (
+                  <a class="m-defrow m-defrow--link" href={row.link} target="_blank" rel="noopener">
+                    <span class="m-defrow__year">{row.years}</span>
+                    <span class="m-defrow__detail" set:html={rich(row.detail ?? '')} />
+                    <span class="m-defrow__arrow">↗</span>
+                  </a>
+                ) : (
+                  <div class="m-defrow">
+                    <span class:list={['m-defrow__year', { 'm-defrow__year--lead': row.lead }]}>
+                      {row.years}
+                    </span>
+                    <span class="m-defrow__detail" set:html={rich(row.detail ?? '')} />
+                  </div>
+                )
+              )
+            }
+          </div>
+          <div>
+            {
+              positions.right.map((row) =>
+                row.link ? (
+                  <a class="m-defrow m-defrow--link" href={row.link} target="_blank" rel="noopener">
+                    <span class="m-defrow__year">{row.years}</span>
+                    <span class="m-defrow__detail" set:html={rich(row.detail ?? '')} />
+                    <span class="m-defrow__arrow">↗</span>
+                  </a>
+                ) : (
+                  <div class="m-defrow">
+                    <span class:list={['m-defrow__year', { 'm-defrow__year--lead': row.lead }]}>
+                      {row.years}
+                    </span>
+                    <span class="m-defrow__detail" set:html={rich(row.detail ?? '')} />
+                  </div>
+                )
+              )
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="g48-88" data-reveal="0">
+        <div class="m-heading" style="margin-bottom: clamp(22px, 3vw, 32px)">
+          <h3 class="m-heading__title">Lectures on film</h3>
+          <span class="m-heading__zh">影音</span>
+        </div>
+        <div class="m-lecturegrid">
+          {
+            lectures.map((lecture) => (
+              <YouTubeEmbed client:load id={lecture.id} title={lecture.title} source={lecture.source} />
+            ))
+          }
+        </div>
+        <div class="m-inline-links mt24">
+          {
+            youtubeLinks.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener" set:html={rich(link.label) + ' ↗'} />
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="g48-88" data-reveal="0">
+        <div class="m-heading">
+          <h3 class="m-heading__title">Interviews &amp; lectures</h3>
+          <span class="m-heading__zh">訪談</span>
+        </div>
+        <div class="m-links m-links--narrow">
+          {
+            interviews.map((link) => (
+              <a class="m-linkrow" href={link.url} target="_blank" rel="noopener">
+                <span class="m-linkrow__label" set:html={rich(link.label)} />
+                <span class="m-linkrow__arrow">↗</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CHAPTER Ⅶ · REMEMBERED =================== -->
+  <section id="ch7" class="chapter ch7" data-chapter {...navAttrs('ch7')}>
+    <ChapterBand meta={meta.ch7} variant="rule" />
+
+    <div class="m-wrap">
+      <div class="m-leads" data-reveal="0">
+        <h2 class="m-h2" set:html={rich(ch7.leadH2)} />
+        <div>
+          <p class="m-lead" set:html={rich(ch7.leadQ)} />
+          <div class="m-credit mt14" set:html={rich(ch7.credit)} />
+          <blockquote class="m-quote">
+            <p set:html={rich(ch7.quote)} />
+            <footer>{ch7.quoteFooter}</footer>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="g44-80" data-reveal="1">
+        <div class="m-heading">
+          <h3 class="m-heading__title">Tributes</h3>
+          <span class="m-heading__zh">追悼</span>
+        </div>
+        <div class="m-links">
+          {
+            tributes.map((link) => (
+              <a class="m-linkrow" href={link.url} target="_blank" rel="noopener">
+                <span
+                  class="m-linkrow__label"
+                  set:html={
+                    rich(link.label) + (link.note ? `<span class="m-linkrow__note">${link.note}</span>` : '')
+                  }
+                />
+                <span class="m-linkrow__arrow">↗</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="m-leads g48-88" style="gap: clamp(32px, 5vw, 68px)" data-reveal="0">
+        <div>
+          <div class="m-heading">
+            <h3 class="m-heading__title">中文報導</h3>
+            <span class="m-heading__zh">In Chinese</span>
+          </div>
+          {
+            chinesePress.map((link) => (
+              <a class:list={['m-linkrow', { 'm-linkrow--zh': link.zh }]} href={link.url} target="_blank" rel="noopener">
+                <span class="m-linkrow__label" set:html={rich(link.label)} />
+                <span class="m-linkrow__arrow">↗</span>
+              </a>
+            ))
+          }
+        </div>
+        <div>
+          <div class="m-heading">
+            <h3 class="m-heading__title">Reference</h3>
+            <span class="m-heading__zh">參考</span>
+          </div>
+          {
+            reference.map((link) => (
+              <a class="m-linkrow" href={link.url} target="_blank" rel="noopener">
+                <span class="m-linkrow__label" set:html={rich(link.label)} />
+                <span class="m-linkrow__arrow">↗</span>
+              </a>
+            ))
+          }
+          <div class="m-onpage">
+            <div class="m-onpage__label">{ch7.onpageLabel}</div>
+            <p class="m-onpage__body" set:html={rich(ch7.onpageBody)} />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== CODA ============================== -->
+    <div class="coda">
+      <div class="coda__inner">
+        <div class="coda__eyebrow" data-reveal="0">
+          <span class="coda__line" aria-hidden="true"></span>
+          <span class="coda__eyebrow-en">{coda.eyebrowEn}</span>
+          <span class="coda__eyebrow-zh">{coda.eyebrowZh}</span>
+        </div>
+        <div class="coda__grid">
+          <div>
+            <h3 class="coda__title" set:html={rich(coda.title)} />
+            <div class="coda__credit" set:html={rich(coda.credit)} />
+            <blockquote class="coda__quote">
+              <p set:html={rich(coda.quote)} />
+            </blockquote>
+            <a
+              class="coda__link"
+              href="https://omnia.sas.upenn.edu/story/windows-asia"
+              target="_blank"
+              rel="noopener"
+            >
+              {coda.link}
+            </a>
+          </div>
+          <div class="coda__figs" data-reveal="2">
+            <figure class="m-photo">
+              <div class="m-mount m-mount--coda" data-archival>
+                <img
+                  class="m-img"
+                  src="/images/snails-entry-6.jpg"
+                  alt="A page of hand-drawn snail studies"
+                  style="background: #E6D7C0"
+                />
+              </div>
+            </figure>
+            <figure class="m-photo">
+              <div class="m-mount m-mount--coda" data-archival>
+                <img
+                  class="m-img"
+                  src="/images/snails-upward-spirals.jpg"
+                  alt="A page of snail drawings inscribed to Victor Mair"
+                  style="background: #E6D7C0"
+                />
+              </div>
+              <figcaption class="m-figcap" set:html={rich(coda.fig2Cap)} />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

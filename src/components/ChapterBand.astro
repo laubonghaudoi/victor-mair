@@ -1,0 +1,20 @@
+---
+import type { ChapterMeta } from '../data/memorial';
+
+interface Props {
+  meta: ChapterMeta;
+  /** 'solid' renders a filled band (Ⅰ, Ⅳ, Ⅴ); 'rule' a 1px bottom rule (Ⅱ, Ⅲ, Ⅵ, Ⅶ). */
+  variant: 'solid' | 'rule';
+}
+
+const { meta, variant } = Astro.props;
+---
+
+<div class:list={['m-band', variant === 'solid' ? 'm-band--solid' : 'm-band--rule']}>
+  <div class="m-band__inner">
+    <span class="m-band__eyebrow">Chapter {meta.num}</span>
+    <span class="m-band__title">{meta.title}</span>
+    <span class="m-band__zh">{meta.zh}</span>
+    <span class="m-band__years">{meta.years}</span>
+  </div>
+</div>
