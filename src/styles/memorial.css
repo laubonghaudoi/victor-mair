@@ -448,6 +448,150 @@
 }
 
 /* ------------------------------------------------------------------ */
+/* Clickable photographs — lightbox                                    */
+/* ------------------------------------------------------------------ */
+
+.m-photo__btn {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.m-photo__btn:focus-visible {
+  outline: 2px solid #e07a62;
+  outline-offset: 4px;
+}
+
+.m-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: clamp(16px, 4vw, 48px);
+  box-sizing: border-box;
+  background: rgba(26, 19, 14, 0.94);
+  backdrop-filter: blur(18px);
+}
+.m-lightbox[data-open] {
+  display: flex;
+  animation: m-lightbox-fade 0.4s ease;
+}
+@keyframes m-lightbox-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.m-lightbox__img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(1280px, 92vw);
+  max-height: calc(100vh - 170px);
+  max-height: calc(100dvh - 170px);
+  background: #f4f1e8;
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.9);
+}
+.m-lightbox__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 62ch;
+  text-align: center;
+}
+.m-lightbox__count {
+  font-size: 12.5px;
+  letter-spacing: 0.18em;
+  color: rgba(232, 221, 202, 0.55);
+}
+.m-lightbox__cap {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #e8ddca;
+}
+.m-lightbox__close,
+.m-lightbox__nav {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  color: #f2ece2;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.m-lightbox__close:hover,
+.m-lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.m-lightbox__close:focus-visible,
+.m-lightbox__nav:focus-visible {
+  outline: 2px solid #e07a62;
+  outline-offset: 2px;
+}
+.m-lightbox__close {
+  top: clamp(14px, 3vw, 28px);
+  right: clamp(14px, 3vw, 28px);
+}
+.m-lightbox__nav--prev {
+  left: clamp(10px, 3vw, 32px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.m-lightbox__nav--next {
+  right: clamp(10px, 3vw, 32px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.m-lightbox__nav[disabled] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* On phones the arrows drop below the image, beside the caption row. */
+@media (max-width: 640px) {
+  .m-lightbox__img {
+    max-height: calc(100vh - 215px);
+    max-height: calc(100dvh - 215px);
+  }
+  .m-lightbox__nav {
+    top: auto;
+    bottom: clamp(14px, 3vw, 24px);
+    transform: none;
+  }
+  .m-lightbox__nav--prev {
+    left: clamp(14px, 3vw, 28px);
+  }
+  .m-lightbox__nav--next {
+    right: clamp(14px, 3vw, 28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m-lightbox[data-open] {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /* Book jackets                                                        */
 /* ------------------------------------------------------------------ */
 

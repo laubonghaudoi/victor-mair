@@ -44,12 +44,14 @@ const figReveal = !parallax && reveal !== undefined ? reveal : undefined;
                 class:list={["m-mount", `m-mount--${mountVariant}`]}
                 data-archival={archival ? "" : undefined}
             >
-                <img
-                    class:list={["m-img", imgClass]}
-                    src={src}
-                    alt={alt}
-                    style={imgBg ? `background:${imgBg}` : undefined}
-                />
+                <button type="button" class="m-photo__btn" data-lightbox aria-label={`View full size: ${alt}`}>
+                    <img
+                        class:list={["m-img", imgClass]}
+                        src={src}
+                        alt={alt}
+                        style={imgBg ? `background:${imgBg}` : undefined}
+                    />
+                </button>
             </div>
             {caption ? (
                 <figcaption class="m-figcap" set:html={rich(caption)} />
@@ -66,12 +68,14 @@ const figReveal = !parallax && reveal !== undefined ? reveal : undefined;
             class:list={["m-mount", `m-mount--${mountVariant}`]}
             data-archival={archival ? "" : undefined}
         >
-            <img
-                class:list={["m-img", imgClass]}
-                src={src}
-                alt={alt}
-                style={imgBg ? `background:${imgBg}` : undefined}
-            />
+            <button type="button" class="m-photo__btn" data-lightbox aria-label={`View full size: ${alt}`}>
+                <img
+                    class:list={["m-img", imgClass]}
+                    src={src}
+                    alt={alt}
+                    style={imgBg ? `background:${imgBg}` : undefined}
+                />
+            </button>
         </div>
         {caption ? <figcaption class="m-figcap" set:html={rich(caption)} /> : null}
     </figure>

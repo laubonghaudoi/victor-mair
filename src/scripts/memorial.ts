@@ -11,6 +11,10 @@
  *
  *   data-motion          'Expressive — parallax and reveals' | 'Gentle — reveals only' | 'Still — no animation'
  *   data-archival-tone   'Warm duotone' | 'True black & white' | 'Untouched'
+ *
+ * Also initialises the photograph lightbox: every Photo renders its image
+ * inside a button.m-photo__btn, and clicking one opens the full-size
+ * original in a dialog (Esc / backdrop / × to close, ← → to navigate).
  */
 
 const MOTION_EXPRESSIVE = 'Expressive — parallax and reveals';
@@ -172,6 +176,111 @@ function initChrome() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Lightbox — click a photograph to view it full size                  */
+/* ------------------------------------------------------------------ */
+
+// Book jackets are deliberately not part of this: only the photographic
+// archive (button.m-photo__btn, rendered by Photo.astro) is zoomable. The
+// lightbox shows the unfiltered original — the archival tone is a viewing
+// filter for the page, not the photograph.
+function initLightbox() {
+  const btns = Array.from(document.querySelectorAll<HTMLButtonElement>('.m-photo__btn[data-lightbox]'));
+  if (!btns.length) return;
+  const items = btns.map((btn) => {
+    const img = btn.querySelector('img')!;
+    const cap = btn.closest('figure')?.querySelector('.m-figcap');
+    return {
+      src: img.currentSrc || img.getAttribute('src') || '',
+      alt: img.alt,
+      cap: cap ? cap.innerHTML : '',
+    };
+  });
+
+  const root = document.createElement('div');
+  root.className = 'm-lightbox';
+  root.setAttribute('role', 'dialog');
+  root.setAttribute('aria-modal', 'true');
+  root.setAttribute('aria-label', 'Photograph, full size');
+  root.hidden = true;
+  root.innerHTML =
+    '<button class="m-lightbox__close" type="button" aria-label="Close full-size view">×</button>' +
+    '<button class="m-lightbox__nav m-lightbox__nav--prev" type="button" aria-label="Previous photograph">←</button>' +
+    '<img class="m-lightbox__img" alt="" />' +
+    '<div class="m-lightbox__meta">' +
+    '<span class="m-lightbox__count"></span>' +
+    '<p class="m-lightbox__cap"></p>' +
+    '</div>' +
+    '<button class="m-lightbox__nav m-lightbox__nav--next" type="button" aria-label="Next photograph">→</button>';
+  document.body.appendChild(root);
+
+  const img = root.querySelector<HTMLImageElement>('.m-lightbox__img')!;
+  const cap = root.querySelector<HTMLElement>('.m-lightbox__cap')!;
+  const count = root.querySelector<HTMLElement>('.m-lightbox__count')!;
+  const closeBtn = root.querySelector<HTMLButtonElement>('.m-lightbox__close')!;
+  const prevBtn = root.querySelector<HTMLButtonElement>('.m-lightbox__nav--prev')!;
+  const nextBtn = root.querySelector<HTMLButtonElement>('.m-lightbox__nav--next')!;
+
+  let idx = 0;
+  let lastFocus: HTMLElement | null = null;
+
+  const preload = (i: number) => {
+    const p = new Image();
+    p.src = items[(i + items.length) % items.length].src;
+  };
+
+  const show = (i: number) => {
+    idx = (i + items.length) % items.length;
+    const it = items[idx];
+    img.src = it.src;
+    img.alt = it.alt;
+    cap.innerHTML = it.cap;
+    count.textContent = items.length > 1 ? `${idx + 1} / ${items.length}` : '';
+    if (items.length > 1) {
+      preload(idx + 1);
+      preload(idx - 1);
+    }
+  };
+
+  const onKey = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight' && items.length > 1) show(idx + 1);
+    else if (e.key === 'ArrowLeft' && items.length > 1) show(idx - 1);
+  };
+
+  const open = (i: number) => {
+    lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    show(i);
+    root.hidden = false;
+    root.setAttribute('data-open', '');
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKey, true);
+    closeBtn.focus();
+  };
+
+  const close = () => {
+    root.removeAttribute('data-open');
+    root.hidden = true;
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKey, true);
+    if (lastFocus) lastFocus.focus();
+  };
+
+  btns.forEach((btn, i) => btn.addEventListener('click', () => open(i)));
+  closeBtn.addEventListener('click', close);
+  prevBtn.addEventListener('click', () => show(idx - 1));
+  nextBtn.addEventListener('click', () => show(idx + 1));
+  img.addEventListener('click', close);
+  root.addEventListener('click', (e) => {
+    if (e.target === root) close();
+  });
+
+  if (items.length < 2) {
+    prevBtn.setAttribute('disabled', '');
+    nextBtn.setAttribute('disabled', '');
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /* Bootstrap                                                           */
 /* ------------------------------------------------------------------ */
 
@@ -187,3 +296,4 @@ applyTone(tone);
 if (motion !== MOTION_STILL) initReveals();
 if (motion === MOTION_EXPRESSIVE) initParallax();
 initChrome();
+initLightbox();
