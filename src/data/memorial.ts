@@ -299,13 +299,13 @@ export const tributes: OutboundLink[] = [
 ];
 
 export const chinesePress: OutboundLink[] = [
-  { label: '百度百科 — 梅維恆詞條', url: 'https://baike.baidu.com/item/%E6%A2%85%E7%BB%B4%E6%81%92/15969888', zh: true },
-  { label: '清華大學', url: 'http://www.tacl.tsinghua.edu.cn/info/1127/1581.htm', zh: true },
-  { label: '豆瓣 — 訪談全文', url: 'https://www.douban.com/group/topic/30364884/', zh: true },
-  { label: '澎湃新聞 一', url: 'https://www.thepaper.cn/newsDetail_forward_20962035', zh: true },
-  { label: '澎湃新聞 二', url: 'https://www.thepaper.cn/newsDetail_forward_33530370', zh: true },
-  { label: '澎湃新聞 三', url: 'https://www.thepaper.cn/newsDetail_forward_33500961', zh: true },
-  { label: '網易', url: 'https://www.163.com/dy/article/L0UKAP4D055660VM.html', zh: true },
+  { label: '百度百科 — 梅维恒', url: 'https://baike.baidu.com/item/%E6%A2%85%E7%BB%B4%E6%81%92/15969888', zh: true },
+  { label: '清華大學 — 梅维恒（Victor H. Mair）', url: 'http://www.tacl.tsinghua.edu.cn/info/1127/1581.htm', zh: true },
+  { label: '豆瓣 — 【学者】梅维恒教授介绍、访谈、论著目录', url: 'https://www.douban.com/group/topic/30364884/', zh: true },
+  { label: '澎湃新聞 — “如是我闻”：佛教叙事范式与逻辑', url: 'https://www.thepaper.cn/newsDetail_forward_20962035', zh: true },
+  { label: '澎湃新聞 — 遥寄一炷心香——纪念梅维恒教授', url: 'https://www.thepaper.cn/newsDetail_forward_33530370', zh: true },
+  { label: '澎湃新聞 — 朱小巧：悼念梅维恒先生', url: 'https://www.thepaper.cn/newsDetail_forward_33500961', zh: true },
+  { label: '網易 — 逝者·梅维恒教授|他改变了中国研究中的若干分支领域', url: 'https://www.163.com/dy/article/L0UKAP4D055660VM.html', zh: true },
 ];
 
 export const reference: OutboundLink[] = [
