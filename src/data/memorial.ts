@@ -273,8 +273,17 @@ export const tributes: OutboundLink[] = [
   },
   { label: 'Pinyin News — Victor H. Mair, 1943–2026', url: 'https://pinyin.info/news/2026/victor-h-mair-1943-2026/' },
   { label: 'Cambria Press — Remembering an extraordinary scholar', url: 'https://cambriapressblog.com/2026/07/02/in-memory-of-victor-h-mair-1943-2026/' },
+  {
+    label: 'Cambria Press — *Texts and Transformations: Essays in Honor of Victor H. Mair*',
+    url: 'https://cambriapressblog.com/2018/03/27/texts-and-transformations-essays-in-honor-of-victor-h-mair/',
+  },
+  {
+    label: 'Cambria Press — *Victor H. Mair: A Celebration*, ed. Neil Schmid &amp; Diana Shuheng Zhang',
+    url: 'https://www.cambriapress.com/pub.cfm?bid=1030',
+  },
   { label: 'MCLC — In Memoriam, by his brother Denis Mair', url: 'https://u.osu.edu/mclc/2026/07/02/in-memoriam-victor-henry-mair/' },
   { label: 'MCLC — “The Victor Mair That I Knew,” by Carlos Yu-Kai Lin', url: 'https://u.osu.edu/mclc/2026/08/05/the-victor-mair-that-i-knew/' },
+  { label: 'MCLC — *Victor H. Mair: A Celebration*, 2023', url: 'https://u.osu.edu/mclc/2023/02/08/victor-h-mair-a-celebration/' },
   {
     label: 'Bruce Humes — a scholar who endowed “sinologist” with new meaning',
     url: 'https://bruce-humes.com/2026/07/03/victor-h-mair-passing-of-a-scholar-who-endowed-sinologist-with-new-meaning/',
@@ -304,6 +313,7 @@ export const reference: OutboundLink[] = [
   { label: 'Wikiquote', url: 'https://en.wikiquote.org/wiki/Victor_H._Mair' },
   { label: 'Biographies.net', url: 'https://www.biographies.net/people/en/victor_h_mair' },
   { label: 'Alchetron', url: 'https://alchetron.com/Victor-H-Mair' },
+  { label: 'Tsadra Commons', url: 'https://commons.tsadra.org/index.php/Mair,_V.' },
 ];
 
 export const interviews: OutboundLink[] = [
