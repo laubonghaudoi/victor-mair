@@ -757,27 +757,21 @@ const navAttrs = (id: string) => {
             </a>
           </div>
           <div class="coda__figs" data-reveal="2">
-            <figure class="m-photo">
-              <div class="m-mount m-mount--coda" data-archival>
-                <img
-                  class="m-img"
-                  src="/images/snails-entry-6.jpg"
-                  alt="A page of hand-drawn snail studies"
-                  style="background: #E6D7C0"
-                />
-              </div>
-            </figure>
-            <figure class="m-photo">
-              <div class="m-mount m-mount--coda" data-archival>
-                <img
-                  class="m-img"
-                  src="/images/snails-upward-spirals.jpg"
-                  alt="A page of snail drawings inscribed to Victor Mair"
-                  style="background: #E6D7C0"
-                />
-              </div>
-              <figcaption class="m-figcap" set:html={rich(coda.fig2Cap)} />
-            </figure>
+            <Photo
+              src="/images/snails-entry-6.jpg"
+              alt="A page of hand-drawn snail studies"
+              imgBg="#E6D7C0"
+              mountVariant="coda"
+              archival
+            />
+            <Photo
+              src="/images/snails-upward-spirals.jpg"
+              alt="A page of snail drawings inscribed to Victor Mair"
+              imgBg="#E6D7C0"
+              caption={coda.fig2Cap}
+              mountVariant="coda"
+              archival
+            />
           </div>
         </div>
       </div>
