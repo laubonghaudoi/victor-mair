@@ -8,6 +8,10 @@
 		{
 			"pattern": "victor-mair.com/*",
 			"zone_name": "victor-mair.com"
+		},
+		{
+			"pattern": "www.victor-mair.com/*",
+			"zone_name": "victor-mair.com"
 		}
 	],
 	"workers_dev": true,
