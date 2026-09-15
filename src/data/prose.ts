@@ -37,7 +37,7 @@ export const ch1 = {
   credit: `— his brother Denis Mair. <a href="https://u.osu.edu/mclc/2026/07/02/in-memoriam-victor-henry-mair/" target="_blank" rel="noopener">In Memoriam, MCLC, July 2026 ↗</a>`,
   yearbookNote: `East Canton High School, 1961 — “one of the greatest basketball teams in the history of East Canton High School,” and Vic Mair among the starting five.`,
   familyLabel: `Family history &amp; childhood`,
-  familyBody: `From the family collection: his mother and her children, and the starting seniors of 1961.`,
+  familyBody: `From the family collection: his mother and her children.`,
   personalLabel: `Personal life`,
   personalQ1: `“Victor now rejoins his beloved wife, Li-ching Chang (1936–2010).”`,
   personalC1: `— <a href="https://pinyin.info/news/2026/victor-h-mair-1943-2026/" target="_blank" rel="noopener">Pinyin News, July 2026 ↗</a>`,
