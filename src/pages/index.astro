@@ -674,6 +674,17 @@ const navAttrs = (id: string) => {
         </div>
       </div>
 
+      <div class="g44-80" id="obituary" data-reveal="1">
+        <div class="m-heading">
+          <h3 class="m-heading__title" set:html={rich(ch7.obitH3)} />
+          <span class="m-heading__zh">{ch7.obitZh}</span>
+        </div>
+        <blockquote class="m-quote">
+          <p set:html={rich(ch7.obitBody)} />
+          <footer>{ch7.obitCredit}</footer>
+        </blockquote>
+      </div>
+
       <div class="g44-80" data-reveal="1">
         <div class="m-heading">
           <h3 class="m-heading__title">Tributes</h3>
