@@ -1038,6 +1038,9 @@
   font-size: 14px;
   color: var(--dim);
 }
+.m-quote--multi > p + p {
+  margin-top: 1em;
+}
 
 /* ------------------------------------------------------------------ */
 /* "On this page" note (chapter Ⅶ)                                     */
