@@ -26,8 +26,9 @@ export const siteConfig = {
    * Applied only to the photographic archive. Book jackets keep their own
    * colour — they are the source of every palette on the page.
    *
-   * 'Untouched' so family photographs are shown in the colour they were
-   * taken in; the older scans are already monochrome and are unaffected.
+   * Standing rule: photographs are always shown exactly as they were taken —
+   * never toned or desaturated. Kept 'Untouched' on purpose; the older scans
+   * are already monochrome, so this changes nothing for them.
    */
   archivalTone: 'Untouched',
 } as const;
