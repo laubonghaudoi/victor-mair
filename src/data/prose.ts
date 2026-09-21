@@ -43,6 +43,28 @@ export const ch1 = {
   personalC1: `— <a href="https://pinyin.info/news/2026/victor-h-mair-1943-2026/" target="_blank" rel="noopener">Pinyin News, July 2026 ↗</a>`,
   personalQ2: `“Victor was a family-oriented person… During those visits, he and I read and discussed passages of the *Book of Changes*, sometimes under my sister's apple tree.”`,
   personalC2: `— Denis Mair`,
+  famH1: `Victor Mair's paternal ancestry was Tirolean (Alpine region of Austria), dating as far back as the 1700's and perhaps further. His father, Josef was born and spent his early years in Pfaffenhofen, along the Inn River not far from Innsbruck. Josef’s childhood home functioned as a mill, a barn and was home to members of the extended Familia Mair (Mayr).. Josef's mother, Maria grew up across the Inn River from Pfaffenhofen in Oberhofen. Josef's father, Englebert was born in Mieming then moved with his large family to Pfaffenhofen. When Josef was eleven, Maria, Englebert and their two young sons moved to Canton, Ohio close to many of Josef's aunts and uncles. Victor's mother Esther Boyce was born and raised in Alliance, Ohio. Her ancestry was primarily Swiss. Esther and Josef met at a bonfire in the countryside between Canton and Alliance. They enjoyed taking long walks and identifying the woodland flora. They were married on October 17, 1936, and moved into their new home built by Esther's family members. Soon Joseph, David, Susan and Victor were born. A little later Thomas, Denis and Heidi completed the large family. Joseph worked at Timken Roller Bearings for 43 years and for many of those years, he worked a second job. Esther raised the children and along with Joe grew much of their own food.`,
+  famH2: `Victor wanted to be a professor since he was nine years old and was voted most studious in high school.\u00A0 He was musical (played the French horn) athletic (basketball and football) and active in clubs and activities, including Student Council President, Senior National Honor Society President, Hi-Y, Latin Club, Letterman’s Club, Student Teacher, Basketball Dance Escort for Queen, Varsity Football Team (#33) and Varsity Basketball Team.`,
+  poemTitle: `Old Rt. 30 Magic`,
+  poemA: [
+    `Mother called you her angel`,
+    `Joe was full of spice`,
+    `David, wise beyond the ages`,
+    `And me, just being nice.\u00A0`,
+  ],
+  poemB: [
+    `We're`,
+    `Lining up`,
+    `Living the easy life`,
+    `And beaming`,
+    `"Happy Birthday Dear Victor"`,
+    `Mairily thru the ages.`,
+  ],
+  poemCredit: `— Susan (Mair) Anderson, for his 60th birthday`,
+  heidiQ1: `“Victor never missed a family gathering to celebrate holidays and birthdays. And he shared many adventures around the world with his wife, Li-Ching, their son Thomas as well as siblings. According to Heidi’sl journal written in 1987, Victor, Li-Ching, their son Thomas and Heidi traveled throughout China including a visit to see brother Denis then living in Beijing.”`,
+  heidiQ2: `“We visited Dujiangyan, the oldest extant irrigation system in the world and the nearby sacred Taoist mountain, Mount Qingcheng. There are eleven important Taoist temples on the mountain. On a rainy, misty day, we visited the irrigation works and two temples – The Temple of Taming the Dragon and the Temple of Two Kings (and perhaps others). The temples’ naturalistic architecture blended with the environment so well that they appeared to be a part of the forested mountain. That enchanting day remains one of the peak experiences of my life, shared with loved ones. Dujiangyan is still used to irrigate over 668,700 hectares of farmland, drain floodwater and provide water resources to more than 50 cities in Sichuan province. It even withstood an earthquake in 2008!”`,
+  heidiCredit: `— Heidi Mair, his sister`,
+  danceCap: `I am sending heartfelt condolences to Vic's family. Seeing his graduation picture took me right back to our tiny gym and the Friday night basketball games followed by a sock hop. So many good memories...Denis you were the tall lanky younger brother and a member of the Mair achievers. Vic passed on my 80th birthday so now it takes on a different meaning. One of my fondest high school memories was a double date shared with Vic and his date. Rest in peace....a life well lived. I had hoped to catch up with him at the 60's reunion. Kathy Gensley Roeper '64`,
 };
 
 export const ch2 = {
@@ -144,8 +166,19 @@ export const ch7 = {
     `Victor was one of the most collegially generous– and brilliant! – people I have ever worked with.  I already miss him very much.`,
   ],
   memCredit: `— Miriam Robbins Dexter, co-author of *Sacred Display*`,
+  studHead: `Tribute from a former student`,
+  studZh: `追憶`,
+  studBody: [
+    `My first course with VHM, we spent two weeks attempting to understand and translate two lines: “道可道,非常道”. The answer eludes me still, though that began a 25-year intellectual friendship, even though I never progressed beyond undergraduate studies, VHM always found time to engage with me across his many interests. I had the good fortune to see him in person one more time this past fall, making the trip to AAS conference in Vancouver. My computer monitor ad hoc stand is a stack of hardcover 'Mathews' Chinese English Dictionary' and 'ABC 汉语大词典' (汉语大词典出版社 edition), so I am continually reminded of the example of his ferocious work ethic.`,
+    `I have an academic heart while not an academic. VHM gave me peeks into his academic world ranging from picking up literary bulletins from the Shanghai offices of 汉语大词典出版社 to a rare, privileged browse of his book stacks. I recall a spring Beijing hutong walk back from lunch to his favorite hotel, where he paused all discussion so that he could savor 享受 the aftertaste of the strawberries that were in a dish at the end of the meal.`,
+    `VHM imparted both the wisdom of taking that moment to savor while retaining the ability to be as excited as a child and profoundly funny. I don't know what in Qingdao started the foreskin 包皮 digression, Thomas may recember, it went on and on, increasingly funny as it continued. The academic rigor and comedy in his frigophobia discussion (fear of cold as a Chinese academy designated psychological condition resulting in wearing all those layers to the point of serious health risk from the heat).`,
+    `I regret that I let the pandemic and his passionate turn in politics diverging from mine be excuses to not engage or visit in recent years when I should have. The past couple years we were more in contact. I had no academic qualification to be at AAS 2026 in Vancouver. My purpose was to see VHM in his public academic splendor.`,
+    `My first sighting of him was the Friday evening, rushing with an armful of books to a session that had moved to a different room in the cavernous convention center.`,
+    `A Saturday morning panel he presided over with inimitable style and energy. The academic conference model of huge numbers of concurrent sessions to empty meeting rooms so that each scholar can have 'presented' their paper, was populated by low-energy moderators who didn't even follow the published program order, let alone command the room, or ensure time for audience questions.`,
+  ],
+  studCredit: `— Stefan Krazowski, former student`,
   onpageLabel: `On this page`,
-  onpageBody: `Every quotation on this page is sourced and linked where it appears. His own words come from *Language Log* (2022), the International Dunhuang Programme (2013), *The Pennsylvania Gazette* (2011) and *Omnia*; words about him from his brother Denis Mair and Carlos Yu-Kai Lin at MCLC (July–August 2026), Pinyin News (July 2026), his obituary in *The Swarthmorean* and a remembrance from his co-author Miriam Robbins Dexter. Dates and titles are from the Penn Almanac notice and his Wikipedia entry. Chapter palettes are sampled from his own book jackets. Corrections are welcome.`,
+  onpageBody: `Every quotation on this page is sourced and linked where it appears. His own words come from *Language Log* (2022), the International Dunhuang Programme (2013), *The Pennsylvania Gazette* (2011) and *Omnia*; words about him from his brother Denis Mair and Carlos Yu-Kai Lin at MCLC (July–August 2026), Pinyin News (July 2026), his obituary in *The Swarthmorean*, a remembrance from his co-author Miriam Robbins Dexter, his sister Heidi Mair (from her 1987 journal) and former student Stefan Krazowski, and family words from his sister Susan (Mair) Anderson and his childhood friend Kathy Gensley Roeper. Dates and titles are from the Penn Almanac notice and his Wikipedia entry. Chapter palettes are sampled from his own book jackets. Corrections are welcome.`,
 };
 
 export const coda = {

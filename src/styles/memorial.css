@@ -1041,6 +1041,9 @@
 .m-quote--multi > p + p {
   margin-top: 1em;
 }
+.m-quote--poem > p.poem-stanza {
+  margin-top: 1.25em;
+}
 
 /* ------------------------------------------------------------------ */
 /* "On this page" note (chapter Ⅶ)                                     */

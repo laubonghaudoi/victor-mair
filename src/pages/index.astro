@@ -126,9 +126,9 @@ const navAttrs = (id: string) => {
       <div class="m-photos g44-84">
         <Photo
           src="/images/portrait-1965.jpg"
-          alt="Victor Mair as a young man, c. 1965"
+          alt="Victor Mair wearing a Nehru jacket made in India, c. 1965"
           imgBg="#EFE3BE"
-          caption="Dartmouth College, c. 1965."
+          caption="A “Nehru” jacket he had made in India after serving in the Peace Corps in Nepal, c. 1965."
           imgClass="m-img--crop m-img--portrait"
           archival
           reveal={0}
@@ -192,6 +192,8 @@ const navAttrs = (id: string) => {
         <div class="m-cell" data-reveal="0">
           <div class="m-cell__label" set:html={rich(ch1.familyLabel)} />
           <p class="m-body mt14" set:html={rich(ch1.familyBody)} />
+          <p class="m-body mt14" set:html={rich(ch1.famH1)} />
+          <p class="m-body mt14" set:html={rich(ch1.famH2)} />
           <div class="mt16">
             <Photo
               src="/images/mom-and-her-children.jpg"
@@ -202,6 +204,24 @@ const navAttrs = (id: string) => {
               reveal={0}
             />
           </div>
+          <div class="mt16">
+            <Photo
+              src="/images/mom-and-oldest-four-children.jpg"
+              alt="His mother and her oldest four children"
+              imgBg="#EFE3BE"
+              caption="Mom and her oldest four children."
+              archival
+              reveal={1}
+            />
+          </div>
+          <blockquote class="m-quote m-quote--poem">
+            <p set:html={rich(ch1.poemTitle)} />
+            {ch1.poemA.map((l) => <p set:html={rich(l)} />)}
+            {ch1.poemB.map((l, i) => (
+              <p class:list={{ "poem-stanza": i === 0 }} set:html={rich(l)} />
+            ))}
+            <footer set:html={rich(ch1.poemCredit)} />
+          </blockquote>
         </div>
         <div class="m-cell" data-reveal="1">
           <div class="m-cell__label" set:html={rich(ch1.personalLabel)} />
@@ -209,6 +229,19 @@ const navAttrs = (id: string) => {
           <div class="m-credit mt10" set:html={rich(ch1.personalC1)} />
           <p class="m-body mt18" set:html={rich(ch1.personalQ2)} />
           <div class="m-credit mt10" set:html={rich(ch1.personalC2)} />
+          <p class="m-body mt18" set:html={rich(ch1.heidiQ1)} />
+          <p class="m-body mt14" set:html={rich(ch1.heidiQ2)} />
+          <div class="m-credit mt10" set:html={rich(ch1.heidiCredit)} />
+          <div class="mt16">
+            <Photo
+              src="/images/leshan-1987.jpg"
+              alt="Thomas, Heidi and Victor in Leshan with colleague John Lagerway and his friend Yves Camus, 1987"
+              imgBg="#EFE3BE"
+              caption="Thomas, Heidi and Victor in Leshan with colleague John Lagerway and his friend Yves Camus, 1987."
+              archival
+              reveal={0}
+            />
+          </div>
           <div class="mt16">
             <Photo
               src="/images/IMG_3561.jpg"
@@ -216,35 +249,45 @@ const navAttrs = (id: string) => {
               imgBg="#EFE3BE"
               caption="“Anyone for lessons? Vic at your service.”"
               archival
-              reveal={0}
-            />
-          </div>
-          <div class="mt16">
-            <Photo
-              src="/images/IMG_1312.jpg"
-              alt="Victor Mair with friends"
-              imgBg="#EFE3BE"
-              caption="With friends."
-              archival
               reveal={1}
             />
           </div>
           <div class="mt16">
             <Photo
-              src="/images/Back packing in Stehekin.jpg"
-              alt="A backpacking trip in Stehekin"
+              src="/images/IMG_1312.jpg"
+              alt="Victor Mair with his son Thomas"
               imgBg="#EFE3BE"
-              caption="Backpacking in Stehekin."
+              caption="Victor and his son Thomas."
               archival
               reveal={2}
+            />
+          </div>
+          <div class="mt16">
+            <Photo
+              src="/images/Back packing in Stehekin.jpg"
+              alt="Victor Mair backpacking in Stehekin with family"
+              imgBg="#EFE3BE"
+              caption="Backpacking in Stehekin with family."
+              archival
+              reveal={3}
+            />
+          </div>
+          <div class="mt16">
+            <Photo
+              src="/images/vic-dancing.jpg"
+              alt="Victor Mair dancing"
+              imgBg="#EFE3BE"
+              caption={ch1.danceCap}
+              archival
+              reveal={4}
             />
           </div>
         </div>
         <Photo
           src="/images/family-walk.jpg"
-          alt="Victor Mair walking with his wife and young son"
+          alt="Victor Mair, his wife Li-Ching and their son Thomas in Taiwan"
           imgBg="#EFE3BE"
-          caption="With his family."
+          caption="Victor, his wife Li-Ching and their son Thomas in Taiwan."
           reveal={2}
         />
       </div>
@@ -723,6 +766,17 @@ const navAttrs = (id: string) => {
         <blockquote class="m-quote m-quote--multi">
           {ch7.memBody.map((p) => <p set:html={rich(p)} />)}
           <footer set:html={rich(ch7.memCredit)} />
+        </blockquote>
+      </div>
+
+      <div class="g44-80" id="student-tribute" data-reveal="1">
+        <div class="m-heading">
+          <h3 class="m-heading__title" set:html={rich(ch7.studHead)} />
+          <span class="m-heading__zh">{ch7.studZh}</span>
+        </div>
+        <blockquote class="m-quote m-quote--multi">
+          {ch7.studBody.map((p) => <p set:html={rich(p)} />)}
+          <footer set:html={rich(ch7.studCredit)} />
         </blockquote>
       </div>
 
