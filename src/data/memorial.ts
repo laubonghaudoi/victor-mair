@@ -271,6 +271,7 @@ export const tributes: OutboundLink[] = [
     label: 'Penn Almanac — Victor Mair, East Asian Languages &amp; Civilizations',
     url: 'https://almanac.upenn.edu/articles/victor-mair-east-asian-languages-civilizations',
   },
+  { label: 'Dartmouth Alumni Magazine — Victor H. Mair ’65', url: 'https://dartmouthalumnimagazine.com/obituary/victor-h-mair-65' },
   { label: 'Pinyin News — Victor H. Mair, 1943–2026', url: 'https://pinyin.info/news/2026/victor-h-mair-1943-2026/' },
   { label: 'Cambria Press — Remembering an extraordinary scholar', url: 'https://cambriapressblog.com/2026/07/02/in-memory-of-victor-h-mair-1943-2026/' },
   {
