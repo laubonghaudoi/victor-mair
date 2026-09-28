@@ -324,6 +324,8 @@ export const interviews: OutboundLink[] = [
   },
   { label: 'Columbia University Press — an interview on *The Art of War*', url: 'https://cup.columbia.edu/author-interviews/mair-art-war/' },
   { label: 'Cornell — the annual Hu Shih Distinguished Lecture', url: 'https://events.cornell.edu/event/annual_hu_shih_distinguished_lecture_victor_mair' },
+  { label: 'The Pennsylvania Gazette — *Steeped in Tea*', url: 'https://thepenngazette.com/steeped-in-tea/' },
+  { label: 'Language Log — *China Babel*', url: 'https://languagelog.ldc.upenn.edu/nll/?p=63227' },
 ];
 
 export const hisTitles: OutboundLink[] = [
