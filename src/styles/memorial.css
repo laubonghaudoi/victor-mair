@@ -1041,6 +1041,13 @@
 .m-quote--multi > p + p {
   margin-top: 1em;
 }
+.m-quote--next {
+  margin-top: 40px;
+}
+.m-quote p.m-quote__title {
+  margin-bottom: 1em;
+  font-style: italic;
+}
 .m-quote--poem > p.poem-stanza {
   margin-top: 1.25em;
 }

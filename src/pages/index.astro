@@ -253,9 +253,9 @@ const navAttrs = (id: string) => {
         <div class="m-cell" data-reveal="2">
           <Photo
             src="/images/family-walk.jpg"
-            alt="Victor Mair, his wife Li-Ching and their son Thomas in Taiwan"
+            alt="Victor Mair, his wife Li-Ching and their son Thomas (Méi Dōnglí 梅東籬) in Taiwan"
             imgBg="#EFE3BE"
-            caption="Victor, his wife Li-Ching and their son Thomas in Taiwan."
+            caption="Victor, his wife Li-Ching and their son Thomas (Méi Dōnglí 梅東籬) in Taiwan."
             reveal={0}
           />
           <div class="mt16">
@@ -776,6 +776,11 @@ const navAttrs = (id: string) => {
         <blockquote class="m-quote m-quote--multi">
           {ch7.studBody.map((p) => <p set:html={rich(p)} />)}
           <footer set:html={rich(ch7.studCredit)} />
+        </blockquote>
+        <blockquote class="m-quote m-quote--multi m-quote--next">
+          <p class="m-quote__title" set:html={rich(ch7.stud2Title)} />
+          {ch7.stud2Body.map((p) => <p set:html={rich(p)} />)}
+          <footer set:html={rich(ch7.stud2Credit)} />
         </blockquote>
       </div>
 
